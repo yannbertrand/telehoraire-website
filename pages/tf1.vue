@@ -5,7 +5,7 @@ import ProgrammeEpisodeNumber from '~/components/ProgrammeEpisodeNumber.vue';
 import ProgrammeProgress from '~/components/ProgrammeProgress.vue';
 import ProgrammeStartStop from '~/components/ProgrammeStartStop.server.vue';
 
-const { data, error } = await useAsyncData('channelData', () =>
+const { data, error } = await useAsyncData('tf1PrimeData', () =>
   $fetch('https://yannbertrand.github.io/telehoraire-api/TF1.fr.prime.json')
 );
 </script>
