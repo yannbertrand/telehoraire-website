@@ -21,14 +21,7 @@ const { data, error } = await useAsyncData('channelData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <NuxtImg
-      v-if="data.channels[0].icon && data.channels[0].icon.length > 0"
-      :src="data.channels[0].icon[0].src"
-      alt=""
-      width="90"
-      height="90"
-      preload
-    />
+    <NuxtImg src="/france3.svg" alt="" width="80" height="80" preload />
   </div>
 
   <article v-for="(programme, index) of data.programmes" :key="programme.start">

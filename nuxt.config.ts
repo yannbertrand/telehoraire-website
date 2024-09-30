@@ -5,7 +5,7 @@ export default defineNuxtConfig({
   modules: ['@nuxt/image'],
 
   image: {
-    domains: ['img.bouygtel.fr', 'www.teleboy.ch', 'focus.telerama.fr'],
+    domains: ['img.bouygtel.fr'],
   },
 
   experimental: {
