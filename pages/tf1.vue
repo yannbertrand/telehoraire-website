@@ -14,20 +14,39 @@ const { data, error } = await useAsyncData('channelData', () =>
   <h1>Téléhoraire</h1>
 
   <hr />
-  <hgroup>
-    <h2>{{ data.channels[0].displayName }}</h2>
-    <p>Ce soir</p>
-  </hgroup>
 
-  <article v-for="programme of data.programmes" :key="programme.start">
+  <div class="channel-title-section">
+    <hgroup class="channel-title">
+      <h2>{{ data.channels[0].displayName }}</h2>
+      <p>Ce soir</p>
+    </hgroup>
+
+    <NuxtImg
+      v-if="data.channels[0].icon && data.channels[0].icon.length > 0"
+      :src="data.channels[0].icon[0].src"
+      alt=""
+      width="90"
+      height="90"
+      preload
+    />
+  </div>
+
+  <article v-for="(programme, index) of data.programmes" :key="programme.start">
     <div class="programme-content">
-      <ProgrammeCover :icon="programme.icon" />
+      <ProgrammeCover
+        v-if="programme.icon"
+        :icon="programme.icon"
+        :preload="index < 3"
+      />
 
       <div>
         <hgroup>
           <h3 class="programme-title">
             <span>{{ programme.title }}</span>
-            <ProgrammeEpisodeNumber :episodeNum="programme.episodeNum" />
+            <ProgrammeEpisodeNumber
+              v-if="programme.episodeNum"
+              :episodeNum="programme.episodeNum"
+            />
           </h3>
           <p>{{ programme.subTitle }}</p>
         </hgroup>
@@ -46,6 +65,18 @@ const { data, error } = await useAsyncData('channelData', () =>
 </template>
 
 <style>
+.channel-title-section {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--pico-spacing);
+  margin-bottom: var(--pico-spacing);
+}
+.channel-title {
+  height: 100%;
+  margin: 0;
+}
 .programme-content {
   display: flex;
   flex-direction: row;

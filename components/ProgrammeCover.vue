@@ -3,16 +3,19 @@ const props = defineProps<{
   icon: {
     src: string;
   }[];
+  preload: boolean;
 }>();
 </script>
 
 <template>
-  <img
-    v-if="props.icon && props.icon.length > 0"
+  <NuxtImg
     :src="props.icon[0].src"
     alt=""
     width="60"
     height="140"
+    format="jpg"
+    :preload
+    :loading="preload ? 'eager' : 'lazy'"
     class="programme-cover"
   />
 </template>
