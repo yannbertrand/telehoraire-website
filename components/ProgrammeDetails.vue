@@ -37,8 +37,8 @@ defineProps<{ programme: any; shouldPreload: boolean }>();
 
     <footer>
       <ProgrammeStartStop :start="programme.start" :stop="programme.stop" />
+      <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
     </footer>
-    <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
   </article>
 </template>
 

@@ -36,7 +36,7 @@ const { data, error } = await useAsyncData('france3PrimeData', () =>
   justify-content: space-between;
   align-items: center;
   gap: var(--pico-spacing);
-  margin-bottom: var(--pico-spacing);
+  margin-bottom: var(--pico-block-spacing-vertical);
 }
 .channel-title {
   height: 100%;

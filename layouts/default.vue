@@ -3,3 +3,13 @@
     <slot />
   </main>
 </template>
+
+<style>
+:root {
+  --pico-block-spacing-vertical: 2rem;
+}
+.container {
+  padding-top: var(--pico-spacing);
+  padding-bottom: var(--pico-spacing);
+}
+</style>
