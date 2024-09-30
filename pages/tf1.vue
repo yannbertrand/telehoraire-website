@@ -1,4 +1,5 @@
 <script setup>
+import Tf1Logo from '~/components/logo/Tf1.vue';
 import ProgrammeDetails from '~/components/ProgrammeDetails.vue';
 
 const { data, error } = await useAsyncData('tf1PrimeData', () =>
@@ -17,14 +18,7 @@ const { data, error } = await useAsyncData('tf1PrimeData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <NuxtImg
-      src="/tf1.svg"
-      alt=""
-      width="80"
-      height="80"
-      preload
-      class="tf1-channel-cover"
-    />
+    <Tf1Logo />
   </div>
 
   <ProgrammeDetails

@@ -1,4 +1,7 @@
 <script setup lang="ts">
+import Tf1Logo from '~/components/logo/Tf1.vue';
+import France2Logo from '~/components/logo/France2.vue';
+import France3Logo from '~/components/logo/France3.vue';
 import GithubLogo from '~/components/GithubLogo.vue';
 </script>
 
@@ -15,13 +18,42 @@ import GithubLogo from '~/components/GithubLogo.vue';
     >.
   </p>
 
-  <h2>TNT</h2>
-
   <article>
-    <ul>
-      <li><NuxtLink to="tf1">TF1</NuxtLink></li>
-      <li><NuxtLink to="france2">France 2</NuxtLink></li>
-      <li><NuxtLink to="france3">France 3</NuxtLink></li>
+    <h2>TNT</h2>
+
+    <ul class="grid channels">
+      <li class="channel-item">
+        <NuxtLink to="tf1" class="channel-link">
+          <Tf1Logo />
+          <div>TF1</div>
+        </NuxtLink>
+      </li>
+      <li class="channel-item">
+        <NuxtLink to="france2" class="channel-link">
+          <France2Logo />
+          <div>France 2</div>
+        </NuxtLink>
+      </li>
+      <li class="channel-item">
+        <NuxtLink to="france3" class="channel-link">
+          <France3Logo />
+          <div>France 3</div>
+        </NuxtLink>
+      </li>
     </ul>
   </article>
 </template>
+
+<style>
+.channels {
+  padding: 0;
+}
+.channel-item {
+  list-style: none;
+  text-align: center;
+}
+.channel-link {
+  display: block;
+  padding: var(--pico-spacing);
+}
+</style>

@@ -1,4 +1,5 @@
 <script setup>
+import France3Logo from '~/components/logo/France3.vue';
 import ProgrammeDetails from '~/components/ProgrammeDetails.vue';
 
 const { data, error } = await useAsyncData('france3PrimeData', () =>
@@ -17,14 +18,7 @@ const { data, error } = await useAsyncData('france3PrimeData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <NuxtImg
-      src="/france3.svg"
-      alt=""
-      width="80"
-      height="80"
-      preload
-      class="france3-channel-cover"
-    />
+    <France3Logo />
   </div>
 
   <ProgrammeDetails

@@ -1,4 +1,5 @@
 <script setup>
+import France2Logo from '~/components/logo/France2.vue';
 import ProgrammeDetails from '~/components/ProgrammeDetails.vue';
 
 const { data, error } = await useAsyncData('france2PrimeData', () =>
@@ -17,14 +18,7 @@ const { data, error } = await useAsyncData('france2PrimeData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <NuxtImg
-      src="/france2.svg"
-      alt=""
-      width="80"
-      height="80"
-      preload
-      class="france2-channel-cover"
-    />
+    <France2Logo />
   </div>
 
   <ProgrammeDetails
@@ -47,11 +41,5 @@ const { data, error } = await useAsyncData('france2PrimeData', () =>
 .channel-title {
   height: 100%;
   margin: 0;
-}
-
-@media (prefers-color-scheme: dark) {
-  .france2-channel-cover {
-    filter: invert(100%) hue-rotate(180deg);
-  }
 }
 </style>
