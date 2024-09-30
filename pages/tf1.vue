@@ -77,25 +77,10 @@ const { data, error } = await useAsyncData('tf1PrimeData', () =>
   height: 100%;
   margin: 0;
 }
-.programme-content {
-  display: flex;
-  flex-direction: row;
-  gap: var(--pico-spacing);
-}
-.programme-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--pico-spacing);
-}
-.programme-description {
-  padding-top: var(--pico-spacing);
-  color: var(--pico-muted-color);
-}
 
 @media (prefers-color-scheme: dark) {
   .tf1-channel-cover {
-    filter: grayscale(30%) saturate(60%);
+    filter: grayscale(20%) saturate(80%);
   }
 }
 </style>

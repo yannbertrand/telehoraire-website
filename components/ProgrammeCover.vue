@@ -30,7 +30,7 @@ const props = defineProps<{
 
 @media (prefers-color-scheme: dark) {
   .programme-cover {
-    filter: grayscale(30%) saturate(80%);
+    filter: grayscale(20%) saturate(90%);
   }
 }
 </style>
