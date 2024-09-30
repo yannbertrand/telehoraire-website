@@ -21,7 +21,14 @@ const { data, error } = await useAsyncData('channelData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <NuxtImg src="/france3.svg" alt="" width="80" height="80" preload />
+    <NuxtImg
+      src="/france3.svg"
+      alt=""
+      width="80"
+      height="80"
+      preload
+      class="france3-channel-cover"
+    />
   </div>
 
   <article v-for="(programme, index) of data.programmes" :key="programme.start">
@@ -84,5 +91,11 @@ const { data, error } = await useAsyncData('channelData', () =>
 .programme-description {
   padding-top: var(--pico-spacing);
   color: var(--pico-muted-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .france3-channel-cover {
+    filter: invert(100%) hue-rotate(180deg);
+  }
 }
 </style>

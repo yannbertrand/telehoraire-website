@@ -21,7 +21,14 @@ const { data, error } = await useAsyncData('channelData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <NuxtImg src="/tf1.svg" alt="" width="80" height="80" preload />
+    <NuxtImg
+      src="/tf1.svg"
+      alt=""
+      width="80"
+      height="80"
+      preload
+      class="tf1-channel-cover"
+    />
   </div>
 
   <article v-for="(programme, index) of data.programmes" :key="programme.start">
@@ -84,5 +91,11 @@ const { data, error } = await useAsyncData('channelData', () =>
 .programme-description {
   padding-top: var(--pico-spacing);
   color: var(--pico-muted-color);
+}
+
+@media (prefers-color-scheme: dark) {
+  .tf1-channel-cover {
+    filter: grayscale(30%) saturate(60%);
+  }
 }
 </style>
