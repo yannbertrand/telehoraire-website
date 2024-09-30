@@ -11,7 +11,7 @@ const { data, error } = await useAsyncData('channelData', () =>
 </script>
 
 <template>
-  <h1>Téléhoraire</h1>
+  <h1><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
 
   <hr />
 

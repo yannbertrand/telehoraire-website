@@ -4,7 +4,7 @@ import GithubLogo from '~/components/GithubLogo.vue';
 
 <template>
   <hgroup>
-    <h1>Téléhoraire</h1>
+    <h1><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
     <p>Le programme télé accessible librement</p>
   </hgroup>
 
