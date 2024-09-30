@@ -1,9 +1,5 @@
 <script setup>
-import ProgrammeCategories from '~/components/ProgrammeCategories.vue';
-import ProgrammeCover from '~/components/ProgrammeCover.vue';
-import ProgrammeEpisodeNumber from '~/components/ProgrammeEpisodeNumber.vue';
-import ProgrammeProgress from '~/components/ProgrammeProgress.vue';
-import ProgrammeStartStop from '~/components/ProgrammeStartStop.server.vue';
+import ProgrammeDetails from '~/components/ProgrammeDetails.vue';
 
 const { data, error } = await useAsyncData('tf1PrimeData', () =>
   $fetch('https://yannbertrand.github.io/telehoraire-api/TF1.fr.prime.json')
@@ -31,37 +27,12 @@ const { data, error } = await useAsyncData('tf1PrimeData', () =>
     />
   </div>
 
-  <article v-for="(programme, index) of data.programmes" :key="programme.start">
-    <div class="programme-content">
-      <ProgrammeCover
-        v-if="programme.icon"
-        :icon="programme.icon"
-        :preload="index < 3"
-      />
-
-      <div>
-        <hgroup>
-          <h3 class="programme-title">
-            <span>{{ programme.title }}</span>
-            <ProgrammeEpisodeNumber
-              v-if="programme.episodeNum"
-              :episodeNum="programme.episodeNum"
-            />
-          </h3>
-          <p>{{ programme.subTitle }}</p>
-        </hgroup>
-
-        <ProgrammeCategories :categories="programme.category" />
-
-        <p class="programme-description">{{ programme.desc }}</p>
-      </div>
-    </div>
-
-    <footer>
-      <ProgrammeStartStop :start="programme.start" :stop="programme.stop" />
-    </footer>
-    <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
-  </article>
+  <ProgrammeDetails
+    v-for="(programme, index) of data.programmes"
+    :key="programme.start"
+    :programme="programme"
+    :shouldPreload="index < 3"
+  />
 </template>
 
 <style>

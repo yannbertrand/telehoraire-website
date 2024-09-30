@@ -1,0 +1,61 @@
+<script setup lang="ts">
+import ProgrammeCategories from '~/components/programme/Categories.vue';
+import ProgrammeCover from '~/components/programme/Cover.vue';
+import ProgrammeEpisodeNumber from '~/components/programme/EpisodeNumber.vue';
+import ProgrammeProgress from '~/components/programme/Progress.vue';
+import ProgrammeStartStop from '~/components/programme/StartStop.server.vue';
+
+defineProps<{ programme: any; shouldPreload: boolean }>();
+</script>
+
+<template>
+  <article>
+    <div class="programme-content">
+      <ProgrammeCover
+        v-if="programme.icon"
+        :icon="programme.icon"
+        :preload="shouldPreload"
+      />
+
+      <div>
+        <hgroup>
+          <h3 class="programme-title">
+            <span>{{ programme.title }}</span>
+            <ProgrammeEpisodeNumber
+              v-if="programme.episodeNum"
+              :episodeNum="programme.episodeNum"
+            />
+          </h3>
+          <p>{{ programme.subTitle }}</p>
+        </hgroup>
+
+        <ProgrammeCategories :categories="programme.category" />
+
+        <p class="programme-description">{{ programme.desc }}</p>
+      </div>
+    </div>
+
+    <footer>
+      <ProgrammeStartStop :start="programme.start" :stop="programme.stop" />
+    </footer>
+    <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
+  </article>
+</template>
+
+<style>
+.programme-content {
+  display: flex;
+  flex-direction: row;
+  gap: var(--pico-spacing);
+}
+.programme-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--pico-spacing);
+}
+.programme-description {
+  padding-top: var(--pico-spacing);
+  color: var(--pico-muted-color);
+}
+</style>
