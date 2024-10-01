@@ -1,7 +1,7 @@
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
   app: { baseURL: '/telehoraire-website/' },
-  css: ['@picocss/pico/css/pico.css'],
+  css: ['@picocss/pico/css/pico.css', '@picocss/pico/css/pico.colors.css'],
   modules: ['@nuxt/image'],
 
   image: {
