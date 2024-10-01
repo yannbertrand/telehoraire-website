@@ -3,6 +3,10 @@ import Tf1Logo from '~/components/logo/Tf1.vue';
 import France2Logo from '~/components/logo/France2.vue';
 import France3Logo from '~/components/logo/France3.vue';
 import GithubLogo from '~/components/GithubLogo.vue';
+
+const { data, error } = await useAsyncData('tntPrimeData', () =>
+  $fetch('https://yannbertrand.github.io/telehoraire-api/tnt.prime.fr.json')
+);
 </script>
 
 <template>
@@ -11,15 +15,20 @@ import GithubLogo from '~/components/GithubLogo.vue';
     <p>Le programme télé accessible librement</p>
   </hgroup>
 
-  <p class="github-link">
-    Voir
-    <NuxtLink to="https://github.com/yannbertrand/telehoraire-website" external
-      >le projet GitHub <GithubLogo /></NuxtLink
-    >.
-  </p>
+  <div class="prime-programmes">
+    <ProgrammeSummary
+      v-for="(programme, index) of data.programmes"
+      :key="programme.start"
+      :programme="programme"
+      :shouldPreload="index < 3"
+      class="programme"
+    />
+  </div>
 
-  <article>
-    <h2>TNT</h2>
+  <hr />
+
+  <article class="programmes-channel">
+    <h2>Les programmes par chaine</h2>
 
     <ul class="grid channels">
       <li class="channel-item">
@@ -42,6 +51,13 @@ import GithubLogo from '~/components/GithubLogo.vue';
       </li>
     </ul>
   </article>
+
+  <p class="github-link">
+    Voir
+    <NuxtLink to="https://github.com/yannbertrand/telehoraire-website" external
+      >le projet GitHub <GithubLogo /></NuxtLink
+    >.
+  </p>
 </template>
 
 <style scoped>
@@ -51,8 +67,17 @@ import GithubLogo from '~/components/GithubLogo.vue';
 .heading-title {
   margin-bottom: calc(0.25 * var(--pico-block-spacing-vertical));
 }
-.github-link {
-  margin-bottom: var(--pico-block-spacing-vertical);
+.prime-programmes {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--pico-spacing);
+  align-content: stretch;
+}
+.programme {
+  flex: 1 1 auto;
+}
+.programmes-channel {
+  margin-top: calc(2 * var(--pico-block-spacing-vertical));
 }
 .channels {
   padding: 0;
