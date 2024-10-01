@@ -23,7 +23,7 @@ defineProps<{ programme: any; shouldPreload: boolean }>();
       <div class="programme-info">
         <hgroup class="programme-heading">
           <h3 class="programme-title">
-            <span>{{ programme.title }}</span>
+            <span v-html="programme.title"></span>
             <ProgrammeEpisodeNumber
               v-if="programme.episodeNum"
               :episodeNum="programme.episodeNum"

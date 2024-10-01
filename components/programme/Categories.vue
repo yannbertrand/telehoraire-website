@@ -15,8 +15,8 @@ function getCategoryClass(category: string) {
       :key="category"
       class="category"
       :class="getCategoryClass(category)"
-      >{{ category }}</span
-    >
+      v-html="category"
+    ></span>
   </div>
 </template>
 

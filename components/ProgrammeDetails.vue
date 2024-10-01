@@ -31,7 +31,7 @@ defineProps<{ programme: any; shouldPreload: boolean }>();
 
         <ProgrammeCategories :categories="programme.category" />
 
-        <p class="programme-description">{{ programme.desc }}</p>
+        <p class="programme-description" v-html="programme.desc"></p>
       </div>
     </div>
 
