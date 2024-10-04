@@ -1,39 +1,48 @@
 <script setup lang="ts">
 import ProgrammeCategories from '~/components/programme/Categories.vue';
-import ProgrammeCover from '~/components/programme/Cover.vue';
 import ProgrammeEpisodeNumber from '~/components/programme/EpisodeNumber.vue';
 import ProgrammeProgress from '~/components/programme/Progress.vue';
 import ProgrammeStartStop from '~/components/programme/StartStop.server.vue';
+import ProgrammeLargeCover from './programme/LargeCover.vue';
 
-defineProps<{ programme: any; shouldPreload: boolean }>();
+const { programme } = defineProps<{ programme: any; shouldPreload: boolean }>();
+
+const hasIllustration =
+  Array.isArray(programme.icon) && programme.icon[0]?.src !== undefined;
 </script>
 
 <template>
-  <article>
-    <div class="programme-content">
-      <div class="programme-images">
+  <article class="programme">
+    <div class="programme-cover" v-if="hasIllustration">
+      <ProgrammeLargeCover
+        :icon="programme.icon"
+        :preload="shouldPreload"
+        class="programme-illustration"
+      />
+      <div class="programme-channel">
         <ProgrammeChannel :channel="programme.channel" />
-        <ProgrammeCover
-          v-if="programme.icon"
-          :icon="programme.icon"
-          :preload="shouldPreload"
+      </div>
+    </div>
+    <ProgrammeChannel
+      v-else
+      :channel="programme.channel"
+      class="programme-cover-only-channel"
+    />
+
+    <div class="programme-content">
+      <h3 class="programme-title">
+        <span v-html="programme.title"></span>
+        <ProgrammeEpisodeNumber
+          v-if="programme.episodeNum"
+          :episodeNum="programme.episodeNum"
         />
-      </div>
+      </h3>
 
-      <div class="programme-info">
-        <hgroup class="programme-heading">
-          <h3 class="programme-title">
-            <span v-html="programme.title"></span>
-            <ProgrammeEpisodeNumber
-              v-if="programme.episodeNum"
-              :episodeNum="programme.episodeNum"
-            />
-          </h3>
-          <p>{{ programme.subTitle }}</p>
-        </hgroup>
+      <ProgrammeCategories :categories="programme.category" />
 
-        <ProgrammeCategories :categories="programme.category" />
-      </div>
+      <p v-if="programme.subTitle" class="programme-subtitle">
+        {{ programme.subTitle }}
+      </p>
     </div>
 
     <footer>
@@ -44,28 +53,54 @@ defineProps<{ programme: any; shouldPreload: boolean }>();
 </template>
 
 <style scoped>
+.programme {
+  max-width: 480px;
+  height: 100%;
+  padding-top: 0;
+}
+
+.programme-cover {
+  position: relative;
+}
+.programme-cover .programme-illustration {
+  width: 110%;
+  margin-left: calc(-1 * var(--pico-block-spacing-horizontal));
+  margin-right: calc(-1 * var(--pico-block-spacing-horizontal));
+  border-top-left-radius: var(--pico-border-radius);
+  border-top-right-radius: var(--pico-border-radius);
+}
+.programme-cover .programme-channel {
+  position: absolute;
+  top: 10px;
+  left: 10px;
+  padding: calc(0.7 * var(--pico-spacing)) var(--pico-spacing);
+  margin: auto;
+  background: rgba(255, 255, 255, 0.8);
+  border-radius: var(--pico-border-radius);
+}
+@media (prefers-color-scheme: dark) {
+  .programme-cover .programme-channel {
+    background: rgba(19, 23, 31, 0.8);
+  }
+}
+
+.programme-cover-only-channel {
+  padding-top: var(--pico-block-spacing-vertical);
+  margin-bottom: calc(-0.75 * var(--pico-block-spacing-vertical));
+}
+
 .programme-content {
-  display: flex;
-  flex-direction: row;
-  gap: var(--pico-spacing);
+  margin-top: var(--pico-block-spacing-vertical);
 }
-.programme-images {
-  display: flex;
-  flex-direction: column;
-  gap: var(--pico-spacing);
-  flex: 0 0 auto;
-}
-.programme-info {
-  flex: 1 1 auto;
-}
-.programme-heading {
-  width: 100%;
-}
-.programme-title {
+.programme-content .programme-title {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--pico-spacing);
+}
+.programme-content .programme-subtitle {
+  margin-top: var(--pico-typography-spacing-vertical);
+  margin-bottom: 0;
 }
 </style>
