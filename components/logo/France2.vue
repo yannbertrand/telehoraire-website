@@ -8,7 +8,7 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
 <template>
   <NuxtImg
     src="/france2.svg"
-    alt="France 2"
+    alt=""
     :width
     :height
     preload
