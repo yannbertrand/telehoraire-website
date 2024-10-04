@@ -30,7 +30,7 @@ const { data, error } = await useAsyncData('tntPrimeData', () =>
   <article class="programmes-channel">
     <h2>Les programmes par chaine</h2>
 
-    <ul class="grid channels">
+    <ul class="channels">
       <li class="channel-item">
         <NuxtLink to="tf1" class="channel-link">
           <Tf1Logo />
@@ -71,7 +71,7 @@ const { data, error } = await useAsyncData('tntPrimeData', () =>
   display: flex;
   flex-wrap: wrap;
   gap: var(--pico-spacing);
-  align-content: stretch;
+  justify-content: space-evenly;
 }
 .programme {
   flex: 1 1 auto;
