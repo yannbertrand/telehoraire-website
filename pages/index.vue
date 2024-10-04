@@ -27,12 +27,14 @@ const { data, error } = await useFetch(
     <p>Le programme télé accessible librement</p>
   </hgroup>
 
-  <template v-for="(programmes, channel) of data.programmesGroupedByChannel">
+  <template
+    v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
+  >
     <h2 class="prime-channel">{{ channel }}</h2>
 
     <div class="prime-programmes">
       <ProgrammeSummary
-        v-for="(programme, index) of programmes"
+        v-for="programme of programmes"
         :key="programme.start"
         :programme="programme"
         :shouldPreload="index < 3"
