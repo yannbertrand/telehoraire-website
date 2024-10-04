@@ -7,18 +7,18 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
 
 <template>
   <NuxtImg
-    src="/tf1.svg"
+    src="/m6.svg"
     alt=""
     :width
     :height
     preload
-    class="tf1-channel-cover"
+    class="m6-channel-cover"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .tf1-channel-cover {
+  .m6-channel-cover {
     filter: grayscale(20%) saturate(80%) brightness(80%);
   }
 }

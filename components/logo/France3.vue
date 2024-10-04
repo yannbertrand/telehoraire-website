@@ -19,7 +19,7 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
 <style>
 @media (prefers-color-scheme: dark) {
   .france3-channel-cover {
-    filter: invert(100%) hue-rotate(180deg);
+    filter: invert(100%) hue-rotate(180deg) brightness(80%);
   }
 }
 </style>
