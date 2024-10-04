@@ -32,14 +32,16 @@ const { data, error } = await useFetch(
   >
     <h2 class="prime-channel">{{ channel }}</h2>
 
-    <div class="prime-programmes">
-      <ProgrammeSummary
-        v-for="programme of programmes"
-        :key="programme.start"
-        :programme="programme"
-        :shouldPreload="index < 3"
-        class="programme"
-      />
+    <div class="prime-programmes-container">
+      <div class="prime-programmes">
+        <ProgrammeSummary
+          v-for="programme of programmes"
+          :key="programme.start"
+          :programme="programme"
+          :shouldPreload="index < 3"
+          class="programme"
+        />
+      </div>
     </div>
   </template>
 
@@ -86,17 +88,35 @@ const { data, error } = await useFetch(
   margin-bottom: calc(0.25 * var(--pico-block-spacing-vertical));
 }
 .prime-channel {
-  margin-top: var(--pico-spacing);
+  margin-top: calc(1.5 * var(--pico-block-spacing-vertical));
   margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
+}
+.prime-programmes-container {
+  --top-spacing: calc(-2 * var(--pico-block-spacing-vertical));
+  --bottom-spacing: calc(-0.5 * var(--pico-block-spacing-vertical));
+
+  margin-top: calc(var(--top-spacing) - var(--pico-block-spacing-vertical));
+  margin-bottom: var(--bottom-spacing);
+
+  --min-horizontal-spacing: var(--pico-spacing);
+  --left-spacing: calc(-1 * var(--min-horizontal-spacing));
+  --right-spacing: calc(-1 * var(--min-horizontal-spacing));
+
+  margin-left: var(--left-spacing);
+  margin-right: var(--left-spacing);
 }
 .prime-programmes {
   display: flex;
-  flex-wrap: wrap;
+  padding-top: calc(-1 * var(--top-spacing));
+  padding-bottom: calc(-1 * var(--bottom-spacing));
+  padding-left: calc(-1 * var(--left-spacing));
+  padding-right: calc(-1 * var(--right-spacing));
+  overflow: visible;
   gap: var(--pico-spacing);
-  justify-content: space-evenly;
+  overflow-y: auto;
 }
 .programme {
-  flex: 1 1 auto;
+  flex: 1 0 100%;
 }
 .programmes-channel {
   margin-top: calc(2 * var(--pico-block-spacing-vertical));
