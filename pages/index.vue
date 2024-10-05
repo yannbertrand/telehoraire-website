@@ -38,19 +38,19 @@ const { data } = await useFetch('/api/prime');
 
     <ul class="channels">
       <li class="channel-item">
-        <NuxtLink to="tf1" class="channel-link">
+        <NuxtLink to="tf1" class="channel-link" noPrefetch>
           <LogoTf1 />
           <div>TF1</div>
         </NuxtLink>
       </li>
       <li class="channel-item">
-        <NuxtLink to="france2" class="channel-link">
+        <NuxtLink to="france2" class="channel-link" noPrefetch>
           <LogoFrance2 />
           <div>France 2</div>
         </NuxtLink>
       </li>
       <li class="channel-item">
-        <NuxtLink to="france3" class="channel-link">
+        <NuxtLink to="france3" class="channel-link" noPrefetch>
           <LogoFrance3 />
           <div>France 3</div>
         </NuxtLink>
