@@ -1,19 +1,5 @@
 <script setup lang="ts">
-const { data, error } = await useFetch(
-  'https://yannbertrand.github.io/telehoraire-api/tnt.prime.fr.json',
-  {
-    transform: (data) => {
-      const programmesGroupedByChannel = Object.groupBy(
-        data?.programmes,
-        (programme) =>
-          data.channels.find((channel) => channel.id === programme.channel)
-            ?.displayName
-      );
-
-      return { programmesGroupedByChannel };
-    },
-  }
-);
+const { data } = await useFetch('/api/prime');
 </script>
 
 <template>
@@ -22,25 +8,30 @@ const { data, error } = await useFetch(
     <p>Le programme télé accessible librement</p>
   </hgroup>
 
-  <template
-    v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
-  >
-    <h2 class="prime-channel">{{ channel }}</h2>
+  <div v-if="data">
+    <p>Dernière mise à jour : {{ data.lastUpdate }}</p>
 
-    <div class="prime-programmes-container">
-      <div class="prime-programmes">
-        <ProgrammeSummary
-          v-for="programme of programmes"
-          :key="programme.start"
-          :programme="programme"
-          :shouldPreload="index < 2"
-          class="programme"
-        />
+    <template
+      v-if="data && data.programmesGroupedByChannel"
+      v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
+    >
+      <h2 class="prime-channel">{{ channel }}</h2>
+
+      <div class="prime-programmes-container">
+        <div class="prime-programmes">
+          <ProgrammeSummary
+            v-for="programme of programmes"
+            :key="programme.start"
+            :programme="programme"
+            :shouldPreload="index < 2"
+            class="programme"
+          />
+        </div>
       </div>
-    </div>
-  </template>
+    </template>
 
-  <hr />
+    <hr />
+  </div>
 
   <article class="programmes-channel">
     <h2>Les programmes par chaine</h2>

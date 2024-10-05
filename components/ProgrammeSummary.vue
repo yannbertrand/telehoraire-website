@@ -1,13 +1,15 @@
 <script setup lang="ts">
-const { programme } = defineProps<{ programme: any; shouldPreload: boolean }>();
+import type { Programme } from '~/server/types.js';
 
-const hasIllustration =
-  Array.isArray(programme.icon) && programme.icon[0]?.src !== undefined;
+const { programme } = defineProps<{
+  programme: Programme;
+  shouldPreload: boolean;
+}>();
 </script>
 
 <template>
   <article class="programme">
-    <div class="programme-cover" v-if="hasIllustration">
+    <div class="programme-cover" v-if="programme.icon">
       <ProgrammeLargeCover
         :icon="programme.icon"
         :preload="shouldPreload"
@@ -40,7 +42,7 @@ const hasIllustration =
     </div>
 
     <footer>
-      <ProgrammeStartStop :start="programme.start" :stop="programme.stop" />
+      {{ programme.startStop }}
       <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
     </footer>
   </article>

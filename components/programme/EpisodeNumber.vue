@@ -1,12 +1,11 @@
 <script setup lang="ts">
+import type { EpisodeNumber } from '~/server/types.js';
+
 const props = defineProps<{
-  episodeNum: {
-    system: 'xmltv_ns' | 'onscreen';
-    _value: string;
-  }[];
+  episodeNum: EpisodeNumber[];
 }>();
 
-function getEpisodeNumber(episodeNum) {
+function getEpisodeNumber(episodeNum: EpisodeNumber[]) {
   if (episodeNum && episodeNum.length > 0) {
     const onscreenEpisodeNum = episodeNum.find(
       ({ system }) => system === 'onscreen'

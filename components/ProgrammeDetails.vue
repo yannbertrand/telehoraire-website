@@ -1,5 +1,7 @@
 <script setup lang="ts">
-defineProps<{ programme: any; shouldPreload: boolean }>();
+import type { Programme } from '~/server/types.js';
+
+defineProps<{ programme: Programme; shouldPreload: boolean }>();
 </script>
 
 <template>
@@ -30,7 +32,7 @@ defineProps<{ programme: any; shouldPreload: boolean }>();
     </div>
 
     <footer>
-      <ProgrammeStartStop :start="programme.start" :stop="programme.stop" />
+      {{ programme.startStop }}
       <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
     </footer>
   </article>
