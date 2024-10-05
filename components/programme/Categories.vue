@@ -50,7 +50,7 @@ function getCategoryClass(category: string) {
 }
 
 .category--information {
-  background-color: var(--pico-color-grey-200);
+  background-color: var(--pico-color-slate-300);
   color: #000;
 }
 
@@ -65,7 +65,7 @@ function getCategoryClass(category: string) {
 }
 
 .category--série {
-  background-color: var(--pico-color-pink-100);
+  background-color: var(--pico-color-pink-200);
   color: #000;
 }
 
@@ -80,7 +80,7 @@ function getCategoryClass(category: string) {
 }
 
 .category--gastronomie {
-  background-color: var(--pico-color-amber-150);
+  background-color: var(--pico-color-amber-200);
   color: #000;
 }
 
@@ -90,17 +90,17 @@ function getCategoryClass(category: string) {
 }
 
 .category--jeu {
-  background-color: var(--pico-color-lime-200);
+  background-color: var(--pico-color-lime-300);
   color: #000;
 }
 
 .category--journal {
-  background-color: var(--pico-color-slate-200);
+  background-color: var(--pico-color-grey-400);
   color: #000;
 }
 
 .category--météo {
-  background-color: var(--pico-color-cyan-150);
+  background-color: var(--pico-color-cyan-200);
   color: #000;
 }
 
@@ -110,22 +110,22 @@ function getCategoryClass(category: string) {
 }
 
 .category--suspense {
-  background-color: var(--pico-color-purple-200);
+  background-color: var(--pico-color-purple-400);
   color: #fff;
 }
 
 .category--espionnage {
-  background-color: var(--pico-color-indigo-300);
+  background-color: var(--pico-color-indigo-450);
   color: #fff;
 }
 
 .category--programme {
-  background-color: var(--pico-color-grey-150);
+  background-color: var(--pico-color-grey-300);
   color: #000;
 }
 
 .category--téléréalité {
-  background-color: var(--pico-color-fuchsia-250);
+  background-color: var(--pico-color-fuchsia-600);
   color: #fff;
 }
 
@@ -135,7 +135,7 @@ function getCategoryClass(category: string) {
 }
 
 .category--humour {
-  background-color: var(--pico-color-pink-100);
+  background-color: var(--pico-color-pink-150);
   color: #000;
 }
 
@@ -170,7 +170,7 @@ function getCategoryClass(category: string) {
 }
 
 .category--sport {
-  background-color: var(--pico-color-amber-200);
+  background-color: var(--pico-color-amber-300);
   color: #000;
 }
 
@@ -180,17 +180,17 @@ function getCategoryClass(category: string) {
 }
 
 .category--musique {
-  background-color: var(--pico-color-indigo-150);
+  background-color: var(--pico-color-indigo-600);
   color: #fff;
 }
 
 .category--histoire {
-  background-color: var(--pico-color-purple-300);
+  background-color: var(--pico-color-purple-500);
   color: #fff;
 }
 
 .category--politique {
-  background-color: var(--pico-color-slate-300);
+  background-color: var(--pico-color-slate-400);
   color: #000;
 }
 
@@ -205,12 +205,12 @@ function getCategoryClass(category: string) {
 }
 
 .category--fiction {
-  background-color: var(--pico-color-fuchsia-200);
+  background-color: var(--pico-color-fuchsia-300);
   color: #000;
 }
 
 .category--talk-show {
-  background-color: var(--pico-color-blue-250);
+  background-color: var(--pico-color-blue-300);
   color: #000;
 }
 
@@ -220,12 +220,12 @@ function getCategoryClass(category: string) {
 }
 
 .category--religions {
-  background-color: var(--pico-color-purple-250);
-  color: #000;
+  background-color: var(--pico-color-purple-400);
+  color: #fff;
 }
 
 .category--dessin-animé {
-  background-color: var(--pico-color-yellow-100);
+  background-color: var(--pico-color-yellow-150);
   color: #000;
 }
 
@@ -240,23 +240,23 @@ function getCategoryClass(category: string) {
 }
 
 .category--football {
-  background-color: var(--pico-color-green-350);
+  background-color: var(--pico-color-green-400);
   color: #000;
 }
 
 .category--western {
-  background-color: var(--pico-color-brown-200);
+  background-color: var(--pico-color-pumpkin-300);
   color: #000;
 }
 
 .category--cinéma {
-  background-color: var(--pico-color-purple-200);
+  background-color: var(--pico-color-purple-450);
   color: #fff;
 }
 
 .category--film {
-  background-color: var(--pico-color-red-250);
-  color: #000;
+  background-color: var(--pico-color-red-600);
+  color: #fff;
 }
 
 .category--court-métrage {
@@ -265,52 +265,52 @@ function getCategoryClass(category: string) {
 }
 
 .category--musicale {
-  background-color: var(--pico-color-indigo-400);
+  background-color: var(--pico-color-indigo-650);
   color: #fff;
 }
 
 .category--spectacle {
-  background-color: var(--pico-color-pink-250);
+  background-color: var(--pico-color-pink-300);
   color: #000;
 }
 
 .category--variétés {
-  background-color: var(--pico-color-lime-250);
+  background-color: var(--pico-color-lime-350);
   color: #000;
 }
 
 .category--rugby {
-  background-color: var(--pico-color-green-450);
+  background-color: var(--pico-color-green-500);
   color: #000;
 }
 
 .category--loisirs {
-  background-color: var(--pico-color-yellow-250);
+  background-color: var(--pico-color-yellow-300);
   color: #000;
 }
 
 .category--ballet {
-  background-color: var(--pico-color-fuchsia-300);
-  color: #000;
+  background-color: var(--pico-color-fuchsia-400);
+  color: #fff;
 }
 
 .category--ballet-classique {
-  background-color: var(--pico-color-indigo-300);
+  background-color: var(--pico-color-indigo-500);
   color: #fff;
 }
 
 .category--comédie-dramatique {
-  background-color: var(--pico-color-red-300);
-  color: #000;
+  background-color: var(--pico-color-red-500);
+  color: #fff;
 }
 
 .category--comédie {
-  background-color: var(--pico-color-orange-150);
+  background-color: var(--pico-color-orange-250);
   color: #000;
 }
 
 .category--science-fiction {
-  background-color: var(--pico-color-indigo-400);
+  background-color: var(--pico-color-indigo-600);
   color: #fff;
 }
 
@@ -320,7 +320,7 @@ function getCategoryClass(category: string) {
 }
 
 .category--fantastique {
-  background-color: var(--pico-color-purple-450);
+  background-color: var(--pico-color-purple-700);
   color: #fff;
 }
 /**
@@ -340,5 +340,7 @@ Le résultat attendu est sous cette forme :
 Si des noms de catégories sont proches, des couleurs similaires peuvent être utilisées.
 
 Fais le pour toutes les catégories disponibles.
+
+Assure toi que les contrastes soient compatibles au RGAA AAA.
  */
 </style>
