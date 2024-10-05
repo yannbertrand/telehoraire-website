@@ -18,7 +18,7 @@ const { data } = await useFetch('/api/prime');
       <h2 class="prime-channel">{{ channel }}</h2>
 
       <div class="prime-programmes-container">
-        <div class="prime-programmes">
+        <div class="prime-programmes" tabindex="0">
           <ProgrammeSummary
             v-for="programme of programmes"
             :key="programme.start"
@@ -97,7 +97,6 @@ const { data } = await useFetch('/api/prime');
   padding-bottom: calc(-1 * var(--bottom-spacing));
   padding-left: calc(-1 * var(--left-spacing));
   padding-right: calc(-1 * var(--right-spacing));
-  overflow: visible;
   gap: var(--pico-spacing);
   overflow-y: auto;
 }
