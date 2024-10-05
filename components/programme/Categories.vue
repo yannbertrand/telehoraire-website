@@ -32,7 +32,7 @@ function getCategoryClass(category: string) {
   border-radius: var(--pico-border-radius);
   color: var(--pico-secondary-inverse);
   display: inline-block;
-  font-size: calc(var(--pico-font-size) * 0.7);
+  font-size: calc(var(--pico-font-size) * 0.9);
   padding: calc(var(--pico-spacing) / 4) calc(var(--pico-spacing));
 }
 

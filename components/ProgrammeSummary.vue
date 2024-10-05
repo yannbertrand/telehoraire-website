@@ -26,19 +26,27 @@ const { programme } = defineProps<{
     />
 
     <div class="programme-content">
-      <h3 class="programme-title">
-        <span v-html="programme.title"></span>
-        <ProgrammeEpisodeNumber
-          v-if="programme.episodeNum"
-          :episodeNum="programme.episodeNum"
-        />
-      </h3>
+      <hgroup>
+        <h3 class="programme-title">
+          <span v-html="programme.title"></span>
+          <ProgrammeEpisodeNumber
+            v-if="programme.episodeNum"
+            :episodeNum="programme.episodeNum"
+          />
+        </h3>
+
+        <p v-if="programme.subTitle" class="programme-subtitle">
+          {{ programme.subTitle }}
+        </p>
+      </hgroup>
 
       <ProgrammeCategories :categories="programme.category" />
 
-      <p v-if="programme.subTitle" class="programme-subtitle">
-        {{ programme.subTitle }}
-      </p>
+      <p
+        v-if="programme.desc"
+        class="programme-description"
+        v-html="programme.desc"
+      ></p>
     </div>
 
     <footer>
@@ -95,8 +103,13 @@ const { programme } = defineProps<{
   align-items: center;
   gap: var(--pico-spacing);
 }
-.programme-content .programme-subtitle {
+.programme-content .programme-description {
   margin-top: var(--pico-typography-spacing-vertical);
   margin-bottom: 0;
+  font-size: calc(0.8 * var(--pico-font-size));
+  display: -webkit-box;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 </style>
