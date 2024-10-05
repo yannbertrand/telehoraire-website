@@ -11,7 +11,6 @@ defineProps<{
   <NuxtImg
     :src="icon[0].src"
     alt=""
-    format="jpg"
     :preload
     :loading="preload ? 'eager' : 'lazy'"
     class="programme-large-illustration"

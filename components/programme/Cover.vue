@@ -13,7 +13,6 @@ const props = defineProps<{
     alt=""
     width="60"
     height="140"
-    format="jpg"
     :preload
     :loading="preload ? 'eager' : 'lazy'"
     class="programme-cover"
