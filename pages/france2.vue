@@ -1,7 +1,4 @@
 <script setup>
-import France2Logo from '~/components/logo/France2.vue';
-import ProgrammeDetails from '~/components/ProgrammeDetails.vue';
-
 const { data, error } = await useAsyncData('france2PrimeData', () =>
   $fetch('https://yannbertrand.github.io/telehoraire-api/France2.fr.prime.json')
 );
@@ -18,7 +15,7 @@ const { data, error } = await useAsyncData('france2PrimeData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <France2Logo />
+    <LogoFrance2 />
   </div>
 
   <ProgrammeDetails

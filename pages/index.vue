@@ -1,9 +1,4 @@
 <script setup lang="ts">
-import Tf1Logo from '~/components/logo/Tf1.vue';
-import France2Logo from '~/components/logo/France2.vue';
-import France3Logo from '~/components/logo/France3.vue';
-import GithubLogo from '~/components/GithubLogo.vue';
-
 const { data, error } = await useFetch(
   'https://yannbertrand.github.io/telehoraire-api/tnt.prime.fr.json',
   {
@@ -53,19 +48,19 @@ const { data, error } = await useFetch(
     <ul class="channels">
       <li class="channel-item">
         <NuxtLink to="tf1" class="channel-link">
-          <Tf1Logo />
+          <LogoTf1 />
           <div>TF1</div>
         </NuxtLink>
       </li>
       <li class="channel-item">
         <NuxtLink to="france2" class="channel-link">
-          <France2Logo />
+          <LogoFrance2 />
           <div>France 2</div>
         </NuxtLink>
       </li>
       <li class="channel-item">
         <NuxtLink to="france3" class="channel-link">
-          <France3Logo />
+          <LogoFrance3 />
           <div>France 3</div>
         </NuxtLink>
       </li>

@@ -1,7 +1,4 @@
 <script setup>
-import Tf1Logo from '~/components/logo/Tf1.vue';
-import ProgrammeDetails from '~/components/ProgrammeDetails.vue';
-
 const { data, error } = await useAsyncData('tf1PrimeData', () =>
   $fetch('https://yannbertrand.github.io/telehoraire-api/TF1.fr.prime.json')
 );
@@ -18,7 +15,7 @@ const { data, error } = await useAsyncData('tf1PrimeData', () =>
       <p>Ce soir</p>
     </hgroup>
 
-    <Tf1Logo />
+    <LogoTf1 />
   </div>
 
   <ProgrammeDetails

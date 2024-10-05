@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import ProgrammeCategories from '~/components/programme/Categories.vue';
-import ProgrammeCover from '~/components/programme/Cover.vue';
-import ProgrammeEpisodeNumber from '~/components/programme/EpisodeNumber.vue';
-import ProgrammeProgress from '~/components/programme/Progress.vue';
-import ProgrammeStartStop from '~/components/programme/StartStop.server.vue';
-
 defineProps<{ programme: any; shouldPreload: boolean }>();
 </script>
 

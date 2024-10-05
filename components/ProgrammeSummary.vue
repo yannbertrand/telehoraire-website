@@ -1,10 +1,4 @@
 <script setup lang="ts">
-import ProgrammeCategories from '~/components/programme/Categories.vue';
-import ProgrammeEpisodeNumber from '~/components/programme/EpisodeNumber.vue';
-import ProgrammeProgress from '~/components/programme/Progress.vue';
-import ProgrammeStartStop from '~/components/programme/StartStop.server.vue';
-import ProgrammeLargeCover from './programme/LargeCover.vue';
-
 const { programme } = defineProps<{ programme: any; shouldPreload: boolean }>();
 
 const hasIllustration =
