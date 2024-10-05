@@ -23,7 +23,7 @@ const { data, error } = await useFetch(
 
 <template>
   <hgroup class="heading">
-    <h1 class="heading-title"><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
+    <h1 class="heading-title">Téléhoraire</h1>
     <p>Le programme télé accessible librement</p>
   </hgroup>
 
