@@ -6,7 +6,14 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
 </script>
 
 <template>
-  <NuxtImg src="/tfx.svg" alt="" :width :height class="tfx-channel-cover" />
+  <NuxtImg
+    src="/tfx.svg"
+    alt=""
+    :width
+    :height
+    loading="lazy"
+    class="tfx-channel-cover"
+  />
 </template>
 
 <style>

@@ -11,6 +11,7 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     alt=""
     :width
     :height
+    loading="lazy"
     class="france5-channel-cover"
   />
 </template>

@@ -6,7 +6,14 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
 </script>
 
 <template>
-  <NuxtImg src="/c8.svg" alt="" :width :height class="c8-channel-cover" />
+  <NuxtImg
+    src="/c8.svg"
+    alt=""
+    :width
+    :height
+    loading="lazy"
+    class="c8-channel-cover"
+  />
 </template>
 
 <style>
