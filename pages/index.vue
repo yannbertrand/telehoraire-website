@@ -38,7 +38,7 @@ const { data, error } = await useFetch(
           v-for="programme of programmes"
           :key="programme.start"
           :programme="programme"
-          :shouldPreload="index < 3"
+          :shouldPreload="index < 2"
           class="programme"
         />
       </div>
