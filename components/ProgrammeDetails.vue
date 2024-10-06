@@ -16,13 +16,13 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
       <div>
         <hgroup>
           <h3 class="programme-title">
-            <span>{{ programme.title }}</span>
+            <span v-html="programme.title"></span>
             <ProgrammeEpisodeNumber
               v-if="programme.episodeNum"
               :episodeNum="programme.episodeNum"
             />
           </h3>
-          <p>{{ programme.subTitle }}</p>
+          <p v-html="programme.subTitle"></p>
         </hgroup>
 
         <ProgrammeCategories :categories="programme.category" />

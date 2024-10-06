@@ -35,9 +35,11 @@ const { programme } = defineProps<{
           />
         </h3>
 
-        <p v-if="programme.subTitle" class="programme-subtitle">
-          {{ programme.subTitle }}
-        </p>
+        <p
+          v-if="programme.subTitle"
+          class="programme-subtitle"
+          v-html="programme.subTitle"
+        ></p>
       </hgroup>
 
       <ProgrammeCategories :categories="programme.category" />
