@@ -10,7 +10,7 @@ export default defineNuxtConfig({
 	modules: ["@nuxt/image"],
 
 	image: {
-		domains: ["img.bouygtel.fr"],
+		domains: ["img.bouygtel.fr", "static-cdn.tv.sfr.net"],
 	},
 
 	experimental: {
