@@ -1,0 +1,1 @@
+import{u as t}from"./C9kayrls.js";import{k as a,o,c as s,a3 as n}from"./B9KYibiD.js";const r={class:"container"},f=a({__name:"default",setup(c){return t({htmlAttrs:{lang:"fr"}}),(e,l)=>(o(),s("main",r,[n(e.$slots,"default")]))}});export{f as default};

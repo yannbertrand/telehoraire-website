@@ -1,0 +1,1 @@
+import{_ as n}from"./D8lhNIjh.js";import{k as a,o,f as r}from"./B9KYibiD.js";const _=a({__name:"France3",props:{width:{default:80},height:{default:80}},setup(c){return(e,s)=>{const t=n;return o(),r(t,{src:"/france3.svg",alt:"",width:e.width,height:e.height,class:"france3-channel-cover"},null,8,["width","height"])}}});export{_};
