@@ -37,6 +37,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          NUXT_APP_BASE_URL: '/telehoraire-website'
           SOURCE_API_URL: ${{ vars.SOURCE_API_URL }}
           TZ: ${{ vars.TZ }}
       - name: Setup Pages

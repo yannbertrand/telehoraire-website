@@ -28,6 +28,7 @@ jobs:
       - name: Build
         run: npm run build
         env:
+          NUXT_APP_BASE_URL: '/telehoraire-website/pr-preview/pr-${{ github.event.number }}'
           SOURCE_API_URL: ${{ vars.SOURCE_API_URL }}
           TZ: ${{ vars.TZ }}
       - name: Deploy PR preview
