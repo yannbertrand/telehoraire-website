@@ -25,20 +25,6 @@ const programmesGroupedByChannel = computed(() => {
 
   return programmesGroupedByChannel as { [channelId: string]: Programme[] };
 });
-
-const programmeImages = computed(() => {
-  if (!data.value) return [];
-
-  return data.value.programmes
-    .map((programme) => {
-      if (!programme.icon || programme.icon.length === 0) {
-        return '';
-      }
-
-      return programme.icon;
-    })
-    .filter((image) => image !== '');
-});
 </script>
 
 <template>
@@ -70,16 +56,6 @@ const programmeImages = computed(() => {
     </ClientOnly>
 
     <hr />
-  </div>
-
-  <div class="hidden">
-    <!-- Nuxt Image: Pre download and optimize icons server side -->
-    <ProgrammeLargeCover
-      v-for="icon of programmeImages"
-      :key="icon[0].src"
-      :icon
-      :preload="false"
-    />
   </div>
 </template>
 
@@ -119,8 +95,5 @@ const programmeImages = computed(() => {
 }
 .programme {
   flex: 1 0 90%;
-}
-.hidden {
-  display: none;
 }
 </style>
