@@ -4,6 +4,7 @@ import type { Icon } from '~/server/types.js';
 defineProps<{
   icon: Icon[];
   preload: boolean;
+  lazyLoad: boolean;
 }>();
 </script>
 
@@ -12,7 +13,7 @@ defineProps<{
     :src="icon[0].src"
     alt=""
     :preload
-    :loading="preload ? 'eager' : 'lazy'"
+    :loading="lazyLoad ? 'lazy' : undefined"
     class="programme-large-illustration"
   />
 </template>

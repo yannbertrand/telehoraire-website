@@ -4,6 +4,7 @@ import type { Programme } from '~/server/types.js';
 const { programme } = defineProps<{
   programme: Programme;
   shouldPreload: boolean;
+  shouldLazyLoad: boolean;
 }>();
 </script>
 
@@ -13,6 +14,7 @@ const { programme } = defineProps<{
       <ProgrammeLargeCover
         :icon="programme.icon"
         :preload="shouldPreload"
+        :lazy-load="shouldLazyLoad"
         class="programme-illustration"
       />
       <div class="programme-channel">

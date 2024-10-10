@@ -23,7 +23,8 @@ const { data } = await useFetch('/api/prime');
             v-for="programme of programmes"
             :key="programme.start"
             :programme="programme"
-            :shouldPreload="index < 2"
+            :should-preload="index < 2"
+            :should-lazy-load="index >= 2"
             class="programme"
           />
         </div>

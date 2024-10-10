@@ -24,6 +24,7 @@ const programmeImages = computed(() => {
       :key="icon[0].src"
       :icon
       :preload="false"
+      :lazy-load="false"
     />
   </div>
 </template>

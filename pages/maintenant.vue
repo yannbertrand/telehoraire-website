@@ -37,7 +37,7 @@ const programmesGroupedByChannel = computed(() => {
     <ClientOnly>
       <template
         v-if="programmesGroupedByChannel"
-        v-for="(programmes, channel) of programmesGroupedByChannel"
+        v-for="(programmes, channel, index) of programmesGroupedByChannel"
       >
         <h2 class="prime-channel">{{ channel }}</h2>
 
@@ -47,7 +47,8 @@ const programmesGroupedByChannel = computed(() => {
               v-for="programme of programmes.slice(0, 5)"
               :key="programme.start"
               :programme="programme"
-              :shouldPreload="false"
+              :should-preload="false"
+              :should-lazy-load="index >= 2"
               class="programme"
             />
           </div>
