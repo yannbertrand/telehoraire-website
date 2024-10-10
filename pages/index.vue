@@ -101,7 +101,7 @@ const { data } = await useFetch('/api/prime');
   overflow-y: auto;
 }
 .programme {
-  flex: 1 0 100%;
+  flex: 1 0 90%;
 }
 .programmes-channel {
   margin-top: calc(2 * var(--pico-block-spacing-vertical));

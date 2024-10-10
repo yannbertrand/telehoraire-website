@@ -118,7 +118,7 @@ const programmeImages = computed(() => {
   overflow-y: auto;
 }
 .programme {
-  flex: 1 0 100%;
+  flex: 1 0 90%;
 }
 .hidden {
   display: none;
