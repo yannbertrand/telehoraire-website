@@ -69,7 +69,7 @@ const { programme } = defineProps<{
   position: relative;
 }
 .programme-cover .programme-illustration {
-  width: 110%;
+  width: calc(100% + 2 * var(--pico-block-spacing-horizontal));
   margin-left: calc(-1 * var(--pico-block-spacing-horizontal));
   margin-right: calc(-1 * var(--pico-block-spacing-horizontal));
   border-top-left-radius: var(--pico-border-radius);
