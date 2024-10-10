@@ -1,30 +1,5 @@
 <script setup lang="ts">
-import type { Programme } from '~/server/types.js';
-
 const { data } = await useFetch('/api/now');
-
-const programmesGroupedByChannel = computed(() => {
-  if (!data.value) return {};
-
-  const now = new Date();
-  const nbOfProgrammesPerChannel: { [channelId: string]: number } = {};
-  const nextProgrammes = data.value.programmes.filter((programme) => {
-    const stop = new Date(programme.stop);
-    if (!nbOfProgrammesPerChannel[programme.channel]) {
-      nbOfProgrammesPerChannel[programme.channel] = 0;
-    }
-    nbOfProgrammesPerChannel[programme.channel]++;
-
-    return stop >= now;
-  });
-
-  const programmesGroupedByChannel = Object.groupBy(
-    nextProgrammes,
-    (programme) => programme.channel
-  );
-
-  return programmesGroupedByChannel as { [channelId: string]: Programme[] };
-});
 </script>
 
 <template>
@@ -36,15 +11,15 @@ const programmesGroupedByChannel = computed(() => {
   <div v-if="data">
     <ClientOnly>
       <template
-        v-if="programmesGroupedByChannel"
-        v-for="(programmes, channel, index) of programmesGroupedByChannel"
+        v-if="data.programmesGroupedByChannel"
+        v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
       >
         <h2 class="prime-channel">{{ channel }}</h2>
 
         <div class="prime-programmes-container">
           <div class="prime-programmes" tabindex="0">
             <ProgrammeSummary
-              v-for="programme of programmes.slice(0, 5)"
+              v-for="programme of programmes?.slice(0, 5)"
               :key="programme.start"
               :programme="programme"
               :should-preload="false"
