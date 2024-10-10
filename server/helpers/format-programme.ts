@@ -8,7 +8,15 @@ export function formatProgramme(programme: Programme) {
 	});
 
 	return {
-		...programme,
+		channel: programme.channel,
+		title: programme.title,
+		start: programme.start,
+		stop: programme.stop,
 		startStop: dateTimeFormat.formatRange($start, $stop),
+		desc: programme.desc,
+		category: programme.category,
+		subTitle: programme.subTitle,
+		icon: programme.icon,
+		episodeNum: programme.episodeNum,
 	};
 }
