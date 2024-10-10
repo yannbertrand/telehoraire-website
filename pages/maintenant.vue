@@ -15,7 +15,7 @@ const programmesGroupedByChannel = computed(() => {
     }
     nbOfProgrammesPerChannel[programme.channel]++;
 
-    return stop >= now && nbOfProgrammesPerChannel[programme.channel] <= 5;
+    return stop >= now;
   });
 
   const programmesGroupedByChannel = Object.groupBy(
@@ -51,17 +51,17 @@ const programmeImages = computed(() => {
     <ClientOnly>
       <template
         v-if="programmesGroupedByChannel"
-        v-for="(programmes, channel, index) of programmesGroupedByChannel"
+        v-for="(programmes, channel) of programmesGroupedByChannel"
       >
         <h2 class="prime-channel">{{ channel }}</h2>
 
         <div class="prime-programmes-container">
           <div class="prime-programmes" tabindex="0">
             <ProgrammeSummary
-              v-for="programme of programmes"
+              v-for="programme of programmes.slice(0, 5)"
               :key="programme.start"
               :programme="programme"
-              :shouldPreload="index < 2"
+              :shouldPreload="false"
               class="programme"
             />
           </div>
