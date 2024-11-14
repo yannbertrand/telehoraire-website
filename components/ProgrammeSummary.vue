@@ -56,7 +56,8 @@ const { programme } = defineProps<{
 
 <style scoped>
 .programme {
-  max-width: 480px;
+  --programme-max-width: 360px;
+  max-width: var(--programme-max-width);
   height: 100%;
   padding-top: 0;
 }

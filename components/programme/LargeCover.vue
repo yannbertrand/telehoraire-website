@@ -20,7 +20,7 @@ defineProps<{
 
 <style>
 .programme-large-illustration {
-  max-width: 480px;
+  max-width: var(--programme-max-width);
   aspect-ratio: 16/9;
   height: auto;
   object-fit: cover;
