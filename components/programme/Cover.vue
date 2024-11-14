@@ -15,12 +15,12 @@ const props = defineProps<{
     height="140"
     :preload
     :loading="preload ? 'eager' : 'lazy'"
-    class="programme-cover"
+    class="programme-small-cover"
   />
 </template>
 
 <style>
-.programme-cover {
+.programme-small-cover {
   width: 60px;
   height: 140px;
   object-fit: cover;
@@ -28,7 +28,7 @@ const props = defineProps<{
 }
 
 @media (prefers-color-scheme: dark) {
-  .programme-cover {
+  .programme-small-cover {
     filter: grayscale(20%) saturate(90%);
   }
 }
