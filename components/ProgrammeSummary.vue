@@ -45,12 +45,6 @@ const { programme } = defineProps<{
       </hgroup>
 
       <ProgrammeCategories :categories="programme.category" />
-
-      <p
-        v-if="programme.desc"
-        class="programme-description"
-        v-html="programme.desc"
-      ></p>
     </div>
 
     <footer>
