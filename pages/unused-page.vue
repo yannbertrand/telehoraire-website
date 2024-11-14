@@ -21,15 +21,25 @@ const programmeImages = computed(() => {
     })
     .filter((icon) => icon[0].src !== '');
 });
+
+function getLargeKey(icon: Icon[]): string {
+  return `${icon[0].src}-large`;
+}
 </script>
 
 <template>
   <!-- Nuxt Image: Pre download and optimize icons server side -->
   <ProgrammeLargeCover
     v-for="icon of programmeImages"
-    :key="icon[0].src"
+    :key="getLargeKey(icon)"
     :icon
     :preload="false"
     :lazy-load="false"
+  />
+  <ProgrammeCover
+    v-for="icon of programmeImages"
+    :key="icon[0].src"
+    :icon
+    :preload="false"
   />
 </template>
