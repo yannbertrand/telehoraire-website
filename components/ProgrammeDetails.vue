@@ -7,12 +7,6 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 <template>
   <article>
     <div class="programme-details-content">
-      <ProgrammeCover
-        v-if="programme.icon"
-        :icon="programme.icon"
-        :preload="shouldPreload"
-      />
-
       <div>
         <hgroup>
           <h3 class="programme-details-title">
@@ -27,6 +21,14 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 
         <ProgrammeCategories :categories="programme.category" />
 
+        <ProgrammeLargeCover
+          v-if="programme.icon"
+          :icon="programme.icon"
+          :preload="shouldPreload"
+          :lazy-load="false"
+          class="programme-details-cover"
+        />
+
         <p class="programme-details-description" v-html="programme.desc"></p>
       </div>
     </div>
@@ -39,16 +41,18 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 </template>
 
 <style>
-.programme-details-content {
-  display: flex;
-  flex-direction: row;
-  gap: var(--pico-spacing);
-}
 .programme-details-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--pico-spacing);
+}
+.programme-details-cover {
+  float: right;
+  margin-top: var(--pico-spacing);
+  margin-left: var(--pico-spacing);
+  margin-bottom: var(--pico-spacing);
+  max-width: 100px;
 }
 .programme-details-description {
   padding-top: var(--pico-spacing);
