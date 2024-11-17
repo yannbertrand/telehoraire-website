@@ -6,7 +6,7 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 
 <template>
   <article>
-    <div class="programme-content">
+    <div class="programme-details-content">
       <ProgrammeCover
         v-if="programme.icon"
         :icon="programme.icon"
@@ -15,7 +15,7 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 
       <div>
         <hgroup>
-          <h3 class="programme-title">
+          <h3 class="programme-details-title">
             <span v-html="programme.title"></span>
             <ProgrammeEpisodeNumber
               v-if="programme.episodeNum"
@@ -27,7 +27,7 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 
         <ProgrammeCategories :categories="programme.category" />
 
-        <p class="programme-description" v-html="programme.desc"></p>
+        <p class="programme-details-description" v-html="programme.desc"></p>
       </div>
     </div>
 
@@ -39,18 +39,18 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 </template>
 
 <style>
-.programme-content {
+.programme-details-content {
   display: flex;
   flex-direction: row;
   gap: var(--pico-spacing);
 }
-.programme-title {
+.programme-details-title {
   display: flex;
   justify-content: space-between;
   align-items: center;
   gap: var(--pico-spacing);
 }
-.programme-description {
+.programme-details-description {
   padding-top: var(--pico-spacing);
   color: var(--pico-muted-color);
 }
