@@ -1,11 +1,33 @@
 <script setup lang="ts">
 import type { Programme } from '~/server/types.js';
 
+function deepToRaw<T extends Record<string, any>>(sourceObj: T): T {
+  const objectIterator = (input: any): any => {
+    if (Array.isArray(input)) {
+      return input.map((item) => objectIterator(item));
+    }
+    if (isRef(input) || isReactive(input) || isProxy(input)) {
+      return objectIterator(toRaw(input));
+    }
+    if (input && typeof input === 'object') {
+      return Object.keys(input).reduce((acc, key) => {
+        acc[key as keyof typeof acc] = objectIterator(input[key]);
+        return acc;
+      }, {} as T);
+    }
+    return input;
+  };
+
+  return objectIterator(sourceObj);
+}
+
 const { programme } = defineProps<{
   programme: Programme;
   shouldPreload: boolean;
   shouldLazyLoad: boolean;
 }>();
+
+const historyUnsafeProgramme = deepToRaw(programme);
 </script>
 
 <template>
@@ -30,7 +52,15 @@ const { programme } = defineProps<{
     <div class="programme-content">
       <hgroup>
         <h3 class="programme-title">
-          <span v-html="programme.title"></span>
+          <RouterLink
+            :to="{
+              name: 'programme',
+              state: {
+                programme: historyUnsafeProgramme,
+              },
+            }"
+            ><span v-html="programme.title"></span
+          ></RouterLink>
           <ProgrammeEpisodeNumber
             v-if="programme.episodeNum"
             :episodeNum="programme.episodeNum"
