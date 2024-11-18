@@ -3,8 +3,8 @@ import type { Programme } from '~/server/types.js';
 
 const router = useRouter();
 
-function getProgramme() {
-  return history.state.programme as Programme;
+if (router.options.history.state.programme == null) {
+  router.replace('/');
 }
 </script>
 
@@ -15,6 +15,10 @@ function getProgramme() {
   <hr />
 
   <ClientOnly>
-    <ProgrammeDetails :programme="getProgramme()" :shouldPreload="true" />
+    <ProgrammeDetails
+      v-if="router.options.history.state.programme"
+      :programme="router.options.history.state.programme as Programme"
+      :shouldPreload="false"
+    />
   </ClientOnly>
 </template>
