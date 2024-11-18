@@ -7,10 +7,12 @@ export default defineEventHandler(async () => {
 
 	const formattedProgrammes = data.programmes.map(formatProgramme);
 
-	const programmesGroupedByChannel = groupProgrammesByChannel(
-		formattedProgrammes,
-		data.channels,
-	);
+	const programmesGroupedByChannel =
+		groupProgrammesByChannel(formattedProgrammes);
 
-	return { programmesGroupedByChannel, lastUpdate };
+	return {
+		programmesGroupedByChannel,
+		channels: data.channels,
+		lastUpdate,
+	};
 });

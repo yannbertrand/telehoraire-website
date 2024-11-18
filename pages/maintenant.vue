@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/now');
+
+function getChannelDisplayName(channelId: string) {
+  return data.value?.channels.find((channel) => channel.id === channelId)
+    ?.displayName;
+}
 </script>
 
 <template>
@@ -14,7 +19,7 @@ const { data } = await useFetch('/api/now');
         v-if="data.programmesGroupedByChannel"
         v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
       >
-        <h2 class="prime-channel">{{ channel }}</h2>
+        <h2 class="prime-channel">{{ getChannelDisplayName(channel) }}</h2>
 
         <div class="prime-programmes-container">
           <div class="prime-programmes" tabindex="0">

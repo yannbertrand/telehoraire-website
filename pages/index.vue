@@ -1,5 +1,10 @@
 <script setup lang="ts">
 const { data } = await useFetch('/api/prime');
+
+function getChannelDisplayName(channelId: string) {
+  return data.value?.channels.find((channel) => channel.id === channelId)
+    ?.displayName;
+}
 </script>
 
 <template>
@@ -15,7 +20,11 @@ const { data } = await useFetch('/api/prime');
       v-if="data && data.programmesGroupedByChannel"
       v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
     >
-      <h2 class="prime-channel">{{ channel }}</h2>
+      <h2 class="prime-channel">
+        <NuxtLink :to="{ name: 'chaine-channel', params: { channel } }">{{
+          getChannelDisplayName(channel)
+        }}</NuxtLink>
+      </h2>
 
       <div class="prime-programmes-container">
         <div class="prime-programmes" tabindex="0">
