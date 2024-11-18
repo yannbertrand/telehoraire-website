@@ -13,6 +13,20 @@ export default defineNuxtConfig({
 		domains: ["img.bouygtel.fr", "static-cdn.tv.sfr.net"],
 	},
 
+	hooks: {
+		// fetch async routes to prerender
+		"prerender:routes": async (ctx) => {
+			const data = await (
+				await fetch(new URL("tnt.prime.fr.json", process.env.SOURCE_API_URL))
+			).json();
+			if (data?.channels?.length > 0) {
+				for (const channel of data.channels) {
+					ctx.routes.add(`/chaine/${channel.id}`);
+				}
+			}
+		},
+	},
+
 	experimental: {
 		componentIslands: true,
 	},
