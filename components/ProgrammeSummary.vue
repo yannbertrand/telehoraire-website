@@ -86,7 +86,6 @@ const historyUnsafeProgramme = deepToRaw(programme);
 
 <style scoped>
 .programme {
-  --programme-max-width: 360px;
   max-width: var(--programme-max-width);
   height: 100%;
   padding-top: 0;

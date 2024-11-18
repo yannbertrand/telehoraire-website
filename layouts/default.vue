@@ -15,6 +15,7 @@ useHead({
 <style>
 :root {
   --pico-block-spacing-vertical: 2rem;
+  --programme-max-width: 360px;
 }
 .container {
   padding-top: var(--pico-spacing);
