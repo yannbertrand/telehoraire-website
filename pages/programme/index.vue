@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Programme } from '~/server/types.js';
+import type { Programme } from "~/server/types.js";
 
 const router = useRouter();
 
 if (router.options.history.state.programme == null) {
-  router.replace('/');
+	router.replace("/");
 }
 </script>
 

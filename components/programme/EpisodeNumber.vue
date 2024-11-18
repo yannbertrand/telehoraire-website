@@ -1,20 +1,20 @@
 <script setup lang="ts">
-import type { EpisodeNumber } from '~/server/types.js';
+import type { EpisodeNumber } from "~/server/types.js";
 
 const props = defineProps<{
-  episodeNum: EpisodeNumber[];
+	episodeNum: EpisodeNumber[];
 }>();
 
 function getEpisodeNumber(episodeNum: EpisodeNumber[]) {
-  if (episodeNum && episodeNum.length > 0) {
-    const onscreenEpisodeNum = episodeNum.find(
-      ({ system }) => system === 'onscreen'
-    );
+	if (episodeNum && episodeNum.length > 0) {
+		const onscreenEpisodeNum = episodeNum.find(
+			({ system }) => system === "onscreen",
+		);
 
-    if (onscreenEpisodeNum !== undefined) {
-      return onscreenEpisodeNum._value;
-    }
-  }
+		if (onscreenEpisodeNum !== undefined) {
+			return onscreenEpisodeNum._value;
+		}
+	}
 }
 
 const episodeNumber = getEpisodeNumber(props.episodeNum);

@@ -1,9 +1,9 @@
 <script setup lang="ts">
-const { data } = await useFetch('/api/prime');
+const { data } = await useFetch("/api/prime");
 
 function getChannelDisplayName(channelId: string) {
-  return data.value?.channels.find((channel) => channel.id === channelId)
-    ?.displayName;
+	return data.value?.channels.find((channel) => channel.id === channelId)
+		?.displayName;
 }
 </script>
 

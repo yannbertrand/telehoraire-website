@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import type { Icon } from '~/server/types.js';
+import type { Icon } from "~/server/types.js";
 
 const props = defineProps<{
-  icon: Icon[];
-  preload: boolean;
+	icon: Icon[];
+	preload: boolean;
 }>();
 </script>
 

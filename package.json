@@ -1,26 +1,29 @@
 {
-  "private": true,
-  "name": "telehoraire",
-  "type": "module",
-  "homepage": "https://github.com/yannbertrand/telehoraire-website",
-  "scripts": {
-    "build": "nuxt generate",
-    "dev": "nuxt dev",
-    "preview": "nuxt preview",
-    "postinstall": "nuxt prepare",
-    "typecheck": "nuxt typecheck"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@nuxt/image": "1.8.1",
-    "@picocss/pico": "2.0.6",
-    "nuxt": "3.14.159",
-    "vue": "3.5.13",
-    "vue-router": "4.4.5"
-  },
-  "devDependencies": {
-    "serve": "14.2.4",
-    "typescript": "5.6.3",
-    "vue-tsc": "2.1.10"
-  }
+	"private": true,
+	"name": "telehoraire",
+	"type": "module",
+	"homepage": "https://github.com/yannbertrand/telehoraire-website",
+	"scripts": {
+		"build": "nuxt generate",
+		"dev": "nuxt dev",
+		"preview": "nuxt preview",
+		"postinstall": "nuxt prepare",
+		"typecheck": "nuxt typecheck",
+		"lint": "biome check",
+		"format": "biome check --write"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@nuxt/image": "1.8.1",
+		"@picocss/pico": "2.0.6",
+		"nuxt": "3.14.159",
+		"vue": "3.5.13",
+		"vue-router": "4.4.5"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"serve": "14.2.4",
+		"typescript": "5.6.3",
+		"vue-tsc": "2.1.10"
+	}
 }

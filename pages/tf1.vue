@@ -1,6 +1,6 @@
 <script setup>
-const { data, error } = await useAsyncData('tf1PrimeData', () =>
-  $fetch('https://yannbertrand.github.io/telehoraire-api/TF1.fr.prime.json')
+const { data, error } = await useAsyncData("tf1PrimeData", () =>
+	$fetch("https://yannbertrand.github.io/telehoraire-api/TF1.fr.prime.json"),
 );
 </script>
 

@@ -1,6 +1,8 @@
 <script setup>
-const { data, error } = await useAsyncData('france3PrimeData', () =>
-  $fetch('https://yannbertrand.github.io/telehoraire-api/France3.fr.prime.json')
+const { data, error } = await useAsyncData("france3PrimeData", () =>
+	$fetch(
+		"https://yannbertrand.github.io/telehoraire-api/France3.fr.prime.json",
+	),
 );
 </script>
 

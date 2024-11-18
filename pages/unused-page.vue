@@ -1,29 +1,29 @@
 <script setup lang="ts">
-import type { Icon } from '~/server/types.js';
+import type { Icon } from "~/server/types.js";
 
-const { data } = await useFetch('/api/now');
+const { data } = await useFetch("/api/now");
 
 const programmeImages = computed(() => {
-  if (!data.value) return [];
+	if (!data.value) return [];
 
-  return Object.values(data.value.programmesGroupedByChannel)
-    .filter((programmes) => programmes !== undefined)
-    .flatMap((programmes): Icon[][] => {
-      const icons = programmes.map((programme): Icon[] => {
-        if (!programme.icon || programme.icon.length === 0) {
-          return [{ src: '' }];
-        }
+	return Object.values(data.value.programmesGroupedByChannel)
+		.filter((programmes) => programmes !== undefined)
+		.flatMap((programmes): Icon[][] => {
+			const icons = programmes.map((programme): Icon[] => {
+				if (!programme.icon || programme.icon.length === 0) {
+					return [{ src: "" }];
+				}
 
-        return programme.icon;
-      });
+				return programme.icon;
+			});
 
-      return icons;
-    })
-    .filter((icon) => icon[0].src !== '');
+			return icons;
+		})
+		.filter((icon) => icon[0].src !== "");
 });
 
 function getLargeKey(icon: Icon[]): string {
-  return `${icon[0].src}-large`;
+	return `${icon[0].src}-large`;
 }
 </script>
 

@@ -1,30 +1,32 @@
 <script setup lang="ts">
-import type { Programme } from '~/server/types.js';
+import type { Programme } from "~/server/types.js";
 
+// biome-ignore lint/suspicious/noExplicitAny: generic function
 function deepToRaw<T extends Record<string, any>>(sourceObj: T): T {
-  const objectIterator = (input: any): any => {
-    if (Array.isArray(input)) {
-      return input.map((item) => objectIterator(item));
-    }
-    if (isRef(input) || isReactive(input) || isProxy(input)) {
-      return objectIterator(toRaw(input));
-    }
-    if (input && typeof input === 'object') {
-      return Object.keys(input).reduce((acc, key) => {
-        acc[key as keyof typeof acc] = objectIterator(input[key]);
-        return acc;
-      }, {} as T);
-    }
-    return input;
-  };
+	// biome-ignore lint/suspicious/noExplicitAny: generic function
+	const objectIterator = (input: any): any => {
+		if (Array.isArray(input)) {
+			return input.map((item) => objectIterator(item));
+		}
+		if (isRef(input) || isReactive(input) || isProxy(input)) {
+			return objectIterator(toRaw(input));
+		}
+		if (input && typeof input === "object") {
+			return Object.keys(input).reduce((acc, key) => {
+				acc[key as keyof typeof acc] = objectIterator(input[key]);
+				return acc;
+			}, {} as T);
+		}
+		return input;
+	};
 
-  return objectIterator(sourceObj);
+	return objectIterator(sourceObj);
 }
 
 const { programme } = defineProps<{
-  programme: Programme;
-  shouldPreload: boolean;
-  shouldLazyLoad: boolean;
+	programme: Programme;
+	shouldPreload: boolean;
+	shouldLazyLoad: boolean;
 }>();
 
 const historyUnsafeProgramme = deepToRaw(programme);

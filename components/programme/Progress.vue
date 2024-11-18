@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
-  start: string;
-  stop: string;
+	start: string;
+	stop: string;
 }>();
 
 const $start = new Date(props.start);

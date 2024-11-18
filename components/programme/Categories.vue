@@ -1,10 +1,10 @@
 <script setup lang="ts">
 defineProps<{
-  categories: string[];
+	categories: string[];
 }>();
 
 function getCategoryClass(category: string) {
-  return `category--${category.replaceAll(/ /g, '-').toLowerCase()}`;
+	return `category--${category.replaceAll(/ /g, "-").toLowerCase()}`;
 }
 </script>
 

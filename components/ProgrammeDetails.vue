@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import type { Programme } from '~/server/types.js';
+import type { Programme } from "~/server/types.js";
 
 defineProps<{ programme: Programme; shouldPreload: boolean }>();
 </script>

@@ -1,6 +1,6 @@
 <script setup lang="ts">
 defineProps<{
-  channel: string;
+	channel: string;
 }>();
 </script>
 

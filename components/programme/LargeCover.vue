@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import type { Icon } from '~/server/types.js';
+import type { Icon } from "~/server/types.js";
 
 defineProps<{
-  icon: Icon[];
-  preload: boolean;
-  lazyLoad: boolean;
+	icon: Icon[];
+	preload: boolean;
+	lazyLoad: boolean;
 }>();
 </script>
 
