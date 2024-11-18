@@ -41,6 +41,9 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 </template>
 
 <style>
+.programme-details-content {
+  --programme-max-width: 140px;
+}
 .programme-details-title {
   display: flex;
   justify-content: space-between;
@@ -52,7 +55,6 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
   margin-top: var(--pico-spacing);
   margin-left: var(--pico-spacing);
   margin-bottom: var(--pico-spacing);
-  max-width: 100px;
 }
 .programme-details-description {
   padding-top: var(--pico-spacing);
