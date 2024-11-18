@@ -33,7 +33,7 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
       </div>
     </div>
 
-    <footer>
+    <footer class="programme-details-footer">
       {{ programme.startStop }}
       <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
     </footer>
@@ -57,5 +57,8 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 .programme-details-description {
   padding-top: var(--pico-spacing);
   color: var(--pico-muted-color);
+}
+.programme-details-footer {
+  clear: right;
 }
 </style>
