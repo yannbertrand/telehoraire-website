@@ -52,7 +52,7 @@ function getChannelDisplayName(channelId: string) {
   margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
 }
 .prime-programmes-container {
-  --top-spacing: calc(-2 * var(--pico-block-spacing-vertical));
+  --top-spacing: calc(-1 * var(--pico-block-spacing-vertical));
   --bottom-spacing: calc(-0.5 * var(--pico-block-spacing-vertical));
 
   margin-top: calc(var(--top-spacing) - var(--pico-block-spacing-vertical));

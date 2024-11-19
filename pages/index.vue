@@ -21,9 +21,11 @@ function getChannelDisplayName(channelId: string) {
       v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
     >
       <h2 class="prime-channel">
-        <NuxtLink :to="{ name: 'chaine-channel', params: { channel } }">{{
-          getChannelDisplayName(channel)
-        }}</NuxtLink>
+        <NuxtLink
+          :to="{ name: 'chaine-channel', params: { channel } }"
+          class="prime-channel-link"
+          >{{ getChannelDisplayName(channel) }}</NuxtLink
+        >
       </h2>
 
       <div class="prime-programmes-container">
@@ -87,8 +89,11 @@ function getChannelDisplayName(channelId: string) {
   margin-top: calc(1.5 * var(--pico-block-spacing-vertical));
   margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
 }
+.prime-channel-link {
+  padding: var(--pico-spacing);
+}
 .prime-programmes-container {
-  --top-spacing: calc(-2 * var(--pico-block-spacing-vertical));
+  --top-spacing: calc(-1 * var(--pico-block-spacing-vertical));
   --bottom-spacing: calc(-0.5 * var(--pico-block-spacing-vertical));
 
   margin-top: calc(var(--top-spacing) - var(--pico-block-spacing-vertical));
