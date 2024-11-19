@@ -7,38 +7,24 @@ const { data } = await useFetch(`/api/prime/${channelId}`);
 </script>
 
 <template>
-  <h1><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
+  <NuxtLayout name="telehoraire">
+    <template #title>Ce soir sur {{ channelId }}</template>
+    <template #last-update>{{ data?.lastUpdate }}</template>
 
-  <hr />
+    <ProgrammeChannel :channel="channelId" class="channel-logo" />
 
-  <div class="channel-title-section">
-    <hgroup class="channel-title">
-      <h2>{{ channelId }}</h2>
-      <p>Ce soir</p>
-    </hgroup>
-    <ProgrammeChannel :channel="channelId" />
-  </div>
-
-  <ProgrammeDetails
-    v-if="data && data.programmes"
-    v-for="(programme, index) of data.programmes"
-    :key="programme.start"
-    :programme="programme"
-    :shouldPreload="index < 3"
-  />
+    <ProgrammeDetails
+      v-if="data && data.programmes"
+      v-for="(programme, index) of data.programmes"
+      :key="programme.start"
+      :programme="programme"
+      :shouldPreload="index < 3"
+    />
+  </NuxtLayout>
 </template>
 
 <style>
-.channel-title-section {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--pico-spacing);
+.channel-logo {
   margin-bottom: var(--pico-block-spacing-vertical);
-}
-.channel-title {
-  height: 100%;
-  margin: 0;
 }
 </style>

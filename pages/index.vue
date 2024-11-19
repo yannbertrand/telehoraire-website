@@ -8,58 +8,52 @@ function getChannelDisplayName(channelId: string) {
 </script>
 
 <template>
-  <hgroup class="heading">
-    <h1 class="heading-title">Téléhoraire</h1>
-    <p>Ce soir</p>
-  </hgroup>
+  <NuxtLayout name="telehoraire">
+    <template #title>Ce soir à la télé</template>
+    <template #last-update>{{ data?.lastUpdate }}</template>
 
-  <div v-if="data">
-    <p>Dernière mise à jour : {{ data.lastUpdate }}</p>
+    <div v-if="data">
+      <template
+        v-if="data && data.programmesGroupedByChannel"
+        v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
+      >
+        <h2 class="prime-channel">
+          <NuxtLink
+            :to="{ name: 'chaine-channel', params: { channel } }"
+            class="prime-channel-link"
+            >{{ getChannelDisplayName(channel) }}</NuxtLink
+          >
+        </h2>
 
-    <template
-      v-if="data && data.programmesGroupedByChannel"
-      v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
-    >
-      <h2 class="prime-channel">
-        <NuxtLink
-          :to="{ name: 'chaine-channel', params: { channel } }"
-          class="prime-channel-link"
-          >{{ getChannelDisplayName(channel) }}</NuxtLink
-        >
-      </h2>
-
-      <div class="prime-programmes-container">
-        <div class="prime-programmes" tabindex="0">
-          <ProgrammeSummary
-            v-for="programme of programmes"
-            :key="programme.start"
-            :programme="programme"
-            :should-preload="index < 2"
-            :should-lazy-load="index >= 2"
-            class="programme"
-          />
+        <div class="prime-programmes-container">
+          <div class="prime-programmes" tabindex="0">
+            <ProgrammeSummary
+              v-for="programme of programmes"
+              :key="programme.start"
+              :programme="programme"
+              :should-preload="index < 2"
+              :should-lazy-load="index >= 2"
+              class="programme"
+            />
+          </div>
         </div>
-      </div>
-    </template>
+      </template>
 
-    <hr />
-  </div>
+      <hr />
+    </div>
 
-  <p class="github-link">
-    Voir
-    <NuxtLink to="https://github.com/yannbertrand/telehoraire-website" external
-      >le projet GitHub <GithubLogo /></NuxtLink
-    >.
-  </p>
+    <p class="github-link">
+      Voir
+      <NuxtLink
+        to="https://github.com/yannbertrand/telehoraire-website"
+        external
+        >le projet GitHub <GithubLogo /></NuxtLink
+      >.
+    </p>
+  </NuxtLayout>
 </template>
 
 <style scoped>
-.heading {
-  margin-bottom: var(--pico-block-spacing-vertical);
-}
-.heading-title {
-  margin-bottom: calc(0.25 * var(--pico-block-spacing-vertical));
-}
 .prime-channel {
   margin-top: calc(1.5 * var(--pico-block-spacing-vertical));
   margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
