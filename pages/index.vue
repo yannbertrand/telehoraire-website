@@ -10,7 +10,7 @@ function getChannelDisplayName(channelId: string) {
 <template>
   <hgroup class="heading">
     <h1 class="heading-title">Téléhoraire</h1>
-    <p>Le programme télé accessible librement</p>
+    <p>Ce soir</p>
   </hgroup>
 
   <div v-if="data">
@@ -44,31 +44,6 @@ function getChannelDisplayName(channelId: string) {
 
     <hr />
   </div>
-
-  <article class="programmes-channel">
-    <h2>Les programmes par chaine</h2>
-
-    <ul class="channels">
-      <li class="channel-item">
-        <NuxtLink to="tf1" class="channel-link" noPrefetch>
-          <LogoTf1 />
-          <div>TF1</div>
-        </NuxtLink>
-      </li>
-      <li class="channel-item">
-        <NuxtLink to="france2" class="channel-link" noPrefetch>
-          <LogoFrance2 />
-          <div>France 2</div>
-        </NuxtLink>
-      </li>
-      <li class="channel-item">
-        <NuxtLink to="france3" class="channel-link" noPrefetch>
-          <LogoFrance3 />
-          <div>France 3</div>
-        </NuxtLink>
-      </li>
-    </ul>
-  </article>
 
   <p class="github-link">
     Voir

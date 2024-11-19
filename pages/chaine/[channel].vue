@@ -1,7 +1,9 @@
 <script setup lang="ts">
 const route = useRoute();
 
-const { data } = await useFetch(`/api/prime/${route.params.channel}`);
+const channelId = `${route.params.channel}`;
+
+const { data } = await useFetch(`/api/prime/${channelId}`);
 </script>
 
 <template>
@@ -11,9 +13,10 @@ const { data } = await useFetch(`/api/prime/${route.params.channel}`);
 
   <div class="channel-title-section">
     <hgroup class="channel-title">
-      <h2>{{ route.params.channel }}</h2>
+      <h2>{{ channelId }}</h2>
       <p>Ce soir</p>
     </hgroup>
+    <ProgrammeChannel :channel="channelId" />
   </div>
 
   <ProgrammeDetails
