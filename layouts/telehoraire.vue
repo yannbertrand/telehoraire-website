@@ -1,9 +1,13 @@
 <script setup lang="ts">
+import BurgerLogo from '~/components/BurgerLogo.vue';
+
 useHead({
-	htmlAttrs: {
-		lang: "fr",
-	},
+  htmlAttrs: {
+    lang: 'fr',
+  },
 });
+
+const isMenuOpened = ref(false);
 </script>
 
 <template>
@@ -12,16 +16,37 @@ useHead({
       <h1 class="heading-title"><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
       <p v-if="$slots.title"><slot name="title"></slot></p>
     </hgroup>
+    <button @click="isMenuOpened = true" aria-label="Ouvrir le menu">
+      <BurgerLogo />
+    </button>
   </header>
 
   <main class="container">
-    <p v-if="$slots['last-update']">
-      Dernière mise à jour&nbsp;: <slot name="last-update"></slot>
-    </p>
+    <template v-if="$slots['last-update']">
+      <p>Dernière mise à jour&nbsp;: <slot name="last-update"></slot></p>
 
-    <hr />
+      <hr />
+    </template>
 
     <slot />
+
+    <dialog :open="isMenuOpened" class="menu">
+      <button
+        @click="isMenuOpened = false"
+        class="close-button"
+        aria-label="Fermer le menu"
+      >
+        <CloseButton />
+      </button>
+
+      <h2>Menu</h2>
+      <ul class="links">
+        <li class="links-item"><NuxtLink to="/">Accueil</NuxtLink></li>
+        <li class="links-item">
+          <NuxtLink to="/maintenant">En cours</NuxtLink>
+        </li>
+      </ul>
+    </dialog>
   </main>
 </template>
 
@@ -55,6 +80,10 @@ useHead({
 
 .heading {
   position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--pico-spacing);
   top: 0;
   padding: var(--pico-spacing);
   z-index: 2;
@@ -69,5 +98,21 @@ useHead({
 .container {
   padding-top: var(--pico-spacing);
   padding-bottom: var(--pico-spacing);
+}
+.menu {
+  display: flex;
+  flex-direction: column;
+}
+.menu .close-button {
+  position: absolute;
+  top: var(--pico-spacing);
+  right: var(--pico-spacing);
+}
+.menu .links {
+  padding: 0;
+}
+.menu .links-item {
+  list-style-type: none;
+  font-size: 1.5rem;
 }
 </style>
