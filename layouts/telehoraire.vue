@@ -1,10 +1,10 @@
 <script setup lang="ts">
-import BurgerLogo from '~/components/BurgerLogo.vue';
+import BurgerLogo from "~/components/BurgerLogo.vue";
 
 useHead({
-  htmlAttrs: {
-    lang: 'fr',
-  },
+	htmlAttrs: {
+		lang: "fr",
+	},
 });
 
 const isMenuOpened = ref(false);
@@ -39,11 +39,19 @@ const isMenuOpened = ref(false);
         <CloseButton />
       </button>
 
-      <h2>Menu</h2>
+      <h1>Menu</h1>
       <ul class="links">
         <li class="links-item"><NuxtLink to="/">Accueil</NuxtLink></li>
         <li class="links-item">
           <NuxtLink to="/maintenant">En cours</NuxtLink>
+        </li>
+        <li class="links-item external">
+          <NuxtLink
+            to="https://github.com/yannbertrand/telehoraire-website"
+            target="_blank"
+            no-rel
+            >GitHub <GithubLogo
+          /></NuxtLink>
         </li>
       </ul>
     </dialog>
@@ -114,5 +122,12 @@ const isMenuOpened = ref(false);
 .menu .links-item {
   list-style-type: none;
   font-size: 1.5rem;
+}
+.menu .external {
+  margin-top: var(--pico-spacing);
+}
+.menu .links a {
+  display: block;
+  padding: calc(var(--pico-spacing) / 4);
 }
 </style>
