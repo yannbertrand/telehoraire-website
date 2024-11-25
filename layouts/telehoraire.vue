@@ -1,6 +1,4 @@
 <script setup lang="ts">
-import BurgerLogo from "~/components/BurgerLogo.vue";
-
 useHead({
 	htmlAttrs: {
 		lang: "fr",
@@ -12,8 +10,8 @@ const isMenuOpened = ref(false);
 
 <template>
   <header class="heading">
-    <hgroup class="heading-titles">
-      <h1 class="heading-title"><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
+    <hgroup class="titles">
+      <h1 class="title"><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
       <p v-if="$slots.title"><slot name="title"></slot></p>
     </hgroup>
     <button @click="isMenuOpened = true" aria-label="Ouvrir le menu">
@@ -41,11 +39,11 @@ const isMenuOpened = ref(false);
 
       <h1>Menu</h1>
       <ul class="links">
-        <li class="links-item"><NuxtLink to="/">Accueil</NuxtLink></li>
-        <li class="links-item">
+        <li class="link"><NuxtLink to="/">Accueil</NuxtLink></li>
+        <li class="link">
           <NuxtLink to="/maintenant">En cours</NuxtLink>
         </li>
-        <li class="links-item external">
+        <li class="link external">
           <NuxtLink
             to="https://github.com/yannbertrand/telehoraire-website"
             target="_blank"
@@ -99,35 +97,43 @@ const isMenuOpened = ref(false);
   backdrop-filter: blur(1rem);
   background-color: var(--pico-header-background);
   border-bottom: var(--pico-border-width) solid var(--pico-header-border-color);
+
+  .titles {
+    margin: 0;
+  }
 }
-.heading-titles {
-  margin: 0;
-}
+
 .container {
   padding-top: var(--pico-spacing);
   padding-bottom: var(--pico-spacing);
 }
+
 .menu {
   display: flex;
   flex-direction: column;
-}
-.menu .close-button {
-  position: absolute;
-  top: var(--pico-spacing);
-  right: var(--pico-spacing);
-}
-.menu .links {
-  padding: 0;
-}
-.menu .links-item {
-  list-style-type: none;
-  font-size: 1.5rem;
-}
-.menu .external {
-  margin-top: var(--pico-spacing);
-}
-.menu .links a {
-  display: block;
-  padding: calc(var(--pico-spacing) / 4);
+
+  .close-button {
+    position: absolute;
+    top: var(--pico-spacing);
+    right: var(--pico-spacing);
+  }
+
+  .links {
+    padding: 0;
+
+    .link {
+      list-style-type: none;
+      font-size: 1.5rem;
+
+      a {
+        display: block;
+        padding: calc(var(--pico-spacing) / 4);
+      }
+    }
+
+    .external {
+      margin-top: var(--pico-spacing);
+    }
+  }
 }
 </style>

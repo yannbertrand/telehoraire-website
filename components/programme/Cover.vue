@@ -25,10 +25,8 @@ const props = defineProps<{
   height: 140px;
   object-fit: cover;
   border-radius: var(--pico-border-radius);
-}
 
-@media (prefers-color-scheme: dark) {
-  .programme-small-cover {
+  @media (prefers-color-scheme: dark) {
     filter: grayscale(20%) saturate(90%);
   }
 }

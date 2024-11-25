@@ -24,10 +24,8 @@ defineProps<{
   aspect-ratio: 16/9;
   height: auto;
   object-fit: cover;
-}
 
-@media (prefers-color-scheme: dark) {
-  .programme-large-illustration {
+  @media (prefers-color-scheme: dark) {
     filter: grayscale(20%) saturate(90%);
   }
 }

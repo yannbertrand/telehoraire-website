@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     loading="lazy"
-    class="arte-channel-cover"
+    class="channel-cover--arte"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .arte-channel-cover {
+  .channel-cover--arte {
     filter: grayscale(20%) saturate(80%);
   }
 }

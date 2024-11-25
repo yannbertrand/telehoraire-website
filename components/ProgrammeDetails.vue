@@ -5,11 +5,11 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 </script>
 
 <template>
-  <article>
-    <div class="programme-details-content">
+  <article class="programme-details">
+    <div>
       <div>
         <hgroup>
-          <h3 class="programme-details-title">
+          <h3 class="title">
             <span v-html="programme.title"></span>
             <ProgrammeEpisodeNumber
               v-if="programme.episodeNum"
@@ -26,14 +26,14 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
           :icon="programme.icon"
           :preload="shouldPreload"
           :lazy-load="false"
-          class="programme-details-cover"
+          class="cover"
         />
 
-        <p class="programme-details-description" v-html="programme.desc"></p>
+        <p class="description" v-html="programme.desc"></p>
       </div>
     </div>
 
-    <footer class="programme-details-footer">
+    <footer class="footer">
       {{ programme.startStop }}
       <ProgrammeProgress :start="programme.start" :stop="programme.stop" />
     </footer>
@@ -41,26 +41,27 @@ defineProps<{ programme: Programme; shouldPreload: boolean }>();
 </template>
 
 <style>
-.programme-details-content {
+.programme-details {
   --programme-max-width: 140px;
-}
-.programme-details-title {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: var(--pico-spacing);
-}
-.programme-details-cover {
-  float: right;
-  margin-top: var(--pico-spacing);
-  margin-left: var(--pico-spacing);
-  margin-bottom: var(--pico-spacing);
-}
-.programme-details-description {
-  padding-top: var(--pico-spacing);
-  color: var(--pico-muted-color);
-}
-.programme-details-footer {
-  clear: right;
+
+  .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--pico-spacing);
+  }
+  .cover {
+    float: right;
+    margin-top: var(--pico-spacing);
+    margin-left: var(--pico-spacing);
+    margin-bottom: var(--pico-spacing);
+  }
+  .description {
+    padding-top: var(--pico-spacing);
+    color: var(--pico-muted-color);
+  }
+  .footer {
+    clear: right;
+  }
 }
 </style>

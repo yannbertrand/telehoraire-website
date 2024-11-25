@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     loading="lazy"
-    class="tmc-channel-cover"
+    class="channel-cover--tmc"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .tmc-channel-cover {
+  .channel-cover--tmc {
     filter: grayscale(20%) brightness(80%);
   }
 }

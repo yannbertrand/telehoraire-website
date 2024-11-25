@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     loading="lazy"
-    class="lcp-channel-cover"
+    class="channel-cover--lcp"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .lcp-channel-cover {
+  .channel-cover--lcp {
     filter: invert(100%) brightness(80%);
   }
 }

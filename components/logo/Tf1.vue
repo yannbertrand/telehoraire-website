@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     preload
-    class="tf1-channel-cover"
+    class="channel-cover--tf1"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .tf1-channel-cover {
+  .channel-cover--tf1 {
     filter: grayscale(20%) saturate(80%) brightness(80%);
   }
 }

@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     loading="lazy"
-    class="w9-channel-cover"
+    class="channel-cover--w9"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .w9-channel-cover {
+  .channel-cover--w9 {
     filter: saturate(90%) brightness(80%);
   }
 }

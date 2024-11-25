@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     loading="lazy"
-    class="bfm-tv-channel-cover"
+    class="channel-cover--bfm-tv"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .bfm-tv-channel-cover {
+  .channel-cover--bfm-tv {
     filter: grayscale(20%) saturate(80%) brightness(80%);
   }
 }

@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     preload
-    class="france2-channel-cover"
+    class="channel-cover--france2"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .france2-channel-cover {
+  .channel-cover--france2 {
     filter: invert(100%) hue-rotate(180deg) brightness(80%);
   }
 }

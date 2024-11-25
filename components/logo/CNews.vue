@@ -12,13 +12,13 @@ withDefaults(defineProps<{ width?: number; height?: number }>(), {
     :width
     :height
     loading="lazy"
-    class="cnews-channel-cover"
+    class="channel-cover--cnews"
   />
 </template>
 
 <style>
 @media (prefers-color-scheme: dark) {
-  .cnews-channel-cover {
+  .channel-cover--cnews {
     filter: saturate(90%) brightness(80%);
   }
 }

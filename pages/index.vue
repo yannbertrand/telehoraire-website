@@ -17,16 +17,16 @@ function getChannelDisplayName(channelId: string) {
         v-if="data && data.programmesGroupedByChannel"
         v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
       >
-        <h2 class="prime-channel">
+        <h2 class="channel">
           <NuxtLink
             :to="{ name: 'chaine-channel', params: { channel } }"
-            class="prime-channel-link"
+            class="channel-link"
             >{{ getChannelDisplayName(channel) }}</NuxtLink
           >
         </h2>
 
-        <div class="prime-programmes-container">
-          <div class="prime-programmes" tabindex="0">
+        <div class="programmes-container">
+          <div class="programmes" tabindex="0">
             <ProgrammeSummary
               v-for="programme of programmes"
               :key="programme.start"
@@ -54,14 +54,15 @@ function getChannelDisplayName(channelId: string) {
 </template>
 
 <style scoped>
-.prime-channel {
+.channel {
   margin-top: calc(1.5 * var(--pico-block-spacing-vertical));
   margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
+  .channel-link {
+    padding: var(--pico-spacing);
+  }
 }
-.prime-channel-link {
-  padding: var(--pico-spacing);
-}
-.prime-programmes-container {
+
+.programmes-container {
   --top-spacing: calc(-1 * var(--pico-block-spacing-vertical));
   --bottom-spacing: calc(-0.5 * var(--pico-block-spacing-vertical));
 
@@ -74,31 +75,19 @@ function getChannelDisplayName(channelId: string) {
 
   margin-left: var(--left-spacing);
   margin-right: var(--left-spacing);
-}
-.prime-programmes {
-  display: flex;
-  padding-top: calc(-1 * var(--top-spacing));
-  padding-bottom: calc(-1 * var(--bottom-spacing));
-  padding-left: calc(-1 * var(--left-spacing));
-  padding-right: calc(-1 * var(--right-spacing));
-  gap: var(--pico-spacing);
-  overflow-y: auto;
-}
-.programme {
-  flex: 1 0 90%;
-}
-.programmes-channel {
-  margin-top: calc(2 * var(--pico-block-spacing-vertical));
-}
-.channels {
-  padding: 0;
-}
-.channel-item {
-  list-style: none;
-  text-align: center;
-}
-.channel-link {
-  display: block;
-  padding: var(--pico-spacing);
+
+  .programmes {
+    display: flex;
+    padding-top: calc(-1 * var(--top-spacing));
+    padding-bottom: calc(-1 * var(--bottom-spacing));
+    padding-left: calc(-1 * var(--left-spacing));
+    padding-right: calc(-1 * var(--right-spacing));
+    gap: var(--pico-spacing);
+    overflow-y: auto;
+
+    .programme {
+      flex: 1 0 90%;
+    }
+  }
 }
 </style>
