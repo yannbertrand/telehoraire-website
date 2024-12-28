@@ -1,4 +1,5 @@
 import { fetchApi } from "../helpers/fetch-api.js";
+import { formatChannel } from "../helpers/format-channel.js";
 import { formatProgramme } from "../helpers/format-programme.js";
 import { groupProgrammesByChannel } from "../helpers/group-programmes-by-channel.js";
 
@@ -14,10 +15,15 @@ export default defineEventHandler(async () => {
 		return now <= stop && start <= tomorrow;
 	});
 
+	const formattedChannels = data.channels.map(formatChannel);
 	const formattedProgrammes = nextProgrammes.map(formatProgramme);
 
 	const programmesGroupedByChannel =
 		groupProgrammesByChannel(formattedProgrammes);
 
-	return { programmesGroupedByChannel, channels: data.channels, lastUpdate };
+	return {
+		programmesGroupedByChannel,
+		channels: formattedChannels,
+		lastUpdate,
+	};
 });
