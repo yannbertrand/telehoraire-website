@@ -18,11 +18,9 @@ function getChannelDisplayName(channelId: string) {
         v-for="(programmes, channel, index) of data.programmesGroupedByChannel"
       >
         <h2 class="channel">
-          <NuxtLink
-            :to="{ name: 'chaine-channel', params: { channel } }"
-            class="channel-link"
-            >{{ getChannelDisplayName(channel) }}</NuxtLink
-          >
+          <NuxtLink :to="`/chaine/${channel}`" class="channel-link">{{
+            getChannelDisplayName(channel)
+          }}</NuxtLink>
         </h2>
 
         <div class="programmes-container">
