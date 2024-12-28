@@ -12,7 +12,10 @@ export default defineEventHandler(async (event) => {
 		!wantedChannel ||
 		!availableChannels.map((channel) => channel.id).includes(wantedChannel)
 	) {
-		throw new Error("Chaine manquante");
+		throw createError({
+			statusCode: 404,
+			statusMessage: `Chaine "${wantedChannel}" non trouvée`,
+		});
 	}
 	const formattedProgrammes = data.programmes.map(formatProgramme);
 

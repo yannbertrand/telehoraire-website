@@ -3,7 +3,14 @@ const route = useRoute();
 
 const channelId = `${route.params.channel}`;
 
-const { data } = await useFetch(`/api/prime/${channelId}`);
+const { data, error } = await useFetch(`/api/prime/${channelId}`);
+
+if (error.value) {
+	showError({
+		statusCode: error.value.statusCode,
+		statusMessage: error.value.statusMessage,
+	});
+}
 </script>
 
 <template>
