@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const channelId = "CanalPlusCinema.fr";
+const channelId = "TF1SeriesFilms";
 
 const { data } = await useFetch(`/api/prime/${channelId}`);
 </script>
