@@ -1,5 +1,7 @@
 <script setup lang="ts">
-const channelId = "CanalPlusSport";
+const route = useRoute();
+
+const channelId = `${route.params.channel}`;
 
 const { data } = await useFetch(`/api/prime/${channelId}`);
 </script>
