@@ -1,7 +1,5 @@
 <script setup lang="ts">
-const route = useRoute();
-
-const channelId = `${route.params.channel}`;
+const channelId = "BFMTV.fr";
 
 const { data } = await useFetch(`/api/prime/${channelId}`);
 </script>
