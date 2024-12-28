@@ -15,7 +15,8 @@ export default defineEventHandler(async (event) => {
 	const programmesGroupedByChannel =
 		groupProgrammesByChannel(formattedProgrammes);
 	if (!programmesGroupedByChannel[wantedChannel]) {
-		throw new Error(`Chaine "${wantedChannel}" introuvable`);
+		console.warn(`Chaine "${wantedChannel}" sans programmes`);
+		programmesGroupedByChannel[wantedChannel] = [];
 	}
 	return {
 		programmes: programmesGroupedByChannel[wantedChannel],
