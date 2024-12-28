@@ -1,4 +1,5 @@
 import type { Programme } from "../types.js";
+import { formatChannelId } from "./format-channel-id.js";
 
 export function formatProgramme(programme: Programme) {
 	const $start = new Date(programme.start);
@@ -8,7 +9,7 @@ export function formatProgramme(programme: Programme) {
 	});
 
 	return {
-		channel: programme.channel,
+		channel: formatChannelId(programme.channel),
 		title: programme.title,
 		start: programme.start,
 		stop: programme.stop,
