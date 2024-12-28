@@ -1,3 +1,5 @@
+import { formatChannelId } from "./server/helpers/format-channel-id.js";
+
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
 	app: {
@@ -21,7 +23,7 @@ export default defineNuxtConfig({
 			).json();
 			if (data?.channels?.length > 0) {
 				for (const channel of data.channels) {
-					ctx.routes.add(`/chaine/${channel.id}`);
+					ctx.routes.add(`/chaine/${formatChannelId(channel.id)}`);
 				}
 			}
 		},
