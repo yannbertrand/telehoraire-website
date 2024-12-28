@@ -9,6 +9,10 @@ const isMenuOpened = ref(false);
 </script>
 
 <template>
+  <NuxtLoadingIndicator
+    color="repeating-linear-gradient(to right,var(--pico-color-blue-500) 0%, var(--pico-color-azure-500) 100%)"
+  />
+
   <header class="heading">
     <hgroup class="titles">
       <h1 class="title"><NuxtLink to="/">Téléhoraire</NuxtLink></h1>
