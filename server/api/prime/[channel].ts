@@ -3,21 +3,22 @@ import { groupProgrammesByChannel } from "~/server/helpers/group-programmes-by-c
 import { fetchApi } from "../../helpers/fetch-api.js";
 
 export default defineEventHandler(async (event) => {
-	const channel = getRouterParam(event, "channel");
+	const wantedChannel = getRouterParam(event, "channel");
 
 	const { data, lastUpdate } = await fetchApi("tnt.prime.fr.json");
-	if (!channel) {
+	const availableChannels = data.channels.map((channel) => channel.id);
+	if (!wantedChannel || !availableChannels.includes(wantedChannel)) {
 		throw new Error("Chaine manquante");
 	}
 	const formattedProgrammes = data.programmes.map(formatProgramme);
 
 	const programmesGroupedByChannel =
 		groupProgrammesByChannel(formattedProgrammes);
-	if (!programmesGroupedByChannel[channel]) {
-		throw new Error(`Chaine "${channel}" introuvable`);
+	if (!programmesGroupedByChannel[wantedChannel]) {
+		throw new Error(`Chaine "${wantedChannel}" introuvable`);
 	}
 	return {
-		programmes: programmesGroupedByChannel[channel],
+		programmes: programmesGroupedByChannel[wantedChannel],
 		lastUpdate,
 	};
 });
