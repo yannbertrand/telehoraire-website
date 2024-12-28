@@ -1,4 +1,4 @@
-import type { Channel, Programme } from "../types.js";
+import type { Programme } from "../types.js";
 
 export function groupProgrammesByChannel(programmes: Programme[]) {
 	return Object.groupBy(programmes, (programme) => programme.channel);
