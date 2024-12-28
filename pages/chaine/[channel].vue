@@ -8,7 +8,7 @@ const { data } = await useFetch(`/api/prime/${channelId}`);
 
 <template>
   <NuxtLayout name="telehoraire">
-    <template #title>Ce soir sur {{ channelId }}</template>
+    <template #title>Ce soir sur {{ data?.channel?.displayName }}</template>
     <template #last-update>{{ data?.lastUpdate }}</template>
 
     <ProgrammeChannel :channel-id="channelId" class="channel-logo" />

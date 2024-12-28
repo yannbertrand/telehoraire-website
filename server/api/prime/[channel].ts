@@ -7,10 +7,11 @@ export default defineEventHandler(async (event) => {
 	const wantedChannel = getRouterParam(event, "channel");
 
 	const { data, lastUpdate } = await fetchApi("tnt.prime.fr.json");
-	const availableChannels = data.channels
-		.map(formatChannel)
-		.map((channel) => channel.id);
-	if (!wantedChannel || !availableChannels.includes(wantedChannel)) {
+	const availableChannels = data.channels.map(formatChannel);
+	if (
+		!wantedChannel ||
+		!availableChannels.map((channel) => channel.id).includes(wantedChannel)
+	) {
 		throw new Error("Chaine manquante");
 	}
 	const formattedProgrammes = data.programmes.map(formatProgramme);
@@ -23,6 +24,7 @@ export default defineEventHandler(async (event) => {
 	}
 	return {
 		programmes: programmesGroupedByChannel[wantedChannel],
+		channel: availableChannels.find((channel) => channel.id === wantedChannel),
 		lastUpdate,
 	};
 });
