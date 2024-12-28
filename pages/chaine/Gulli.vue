@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const channelId = "CanalPlusSport.fr";
+const channelId = "Gulli";
 
 const { data } = await useFetch(`/api/prime/${channelId}`);
 </script>

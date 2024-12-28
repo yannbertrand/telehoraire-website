@@ -1,5 +1,5 @@
 <script setup lang="ts">
-const channelId = "LaChaineParlementaire.fr";
+const channelId = "BFMTV";
 
 const { data } = await useFetch(`/api/prime/${channelId}`);
 </script>
