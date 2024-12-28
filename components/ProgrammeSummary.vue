@@ -42,12 +42,12 @@ const historyUnsafeProgramme = deepToRaw(programme);
         class="illustration"
       />
       <div class="channel">
-        <ProgrammeChannel :channel="programme.channel" />
+        <ProgrammeChannel :channel-id="programme.channel" />
       </div>
     </div>
     <ProgrammeChannel
       v-else
-      :channel="programme.channel"
+      :channel-id="programme.channel"
       class="cover-only-channel"
     />
 

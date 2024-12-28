@@ -11,7 +11,7 @@ const { data } = await useFetch(`/api/prime/${channelId}`);
     <template #title>Ce soir sur {{ channelId }}</template>
     <template #last-update>{{ data?.lastUpdate }}</template>
 
-    <ProgrammeChannel :channel="channelId" class="channel-logo" />
+    <ProgrammeChannel :channel-id="channelId" class="channel-logo" />
 
     <ProgrammeDetails
       v-if="data && data.programmes"
