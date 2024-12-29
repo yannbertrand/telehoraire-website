@@ -118,7 +118,7 @@ const isMenuOpened = ref(false);
 
   .close-button {
     position: absolute;
-    top: var(--pico-spacing);
+    top: calc(var(--pico-spacing) + 4px);
     right: var(--pico-spacing);
   }
 
