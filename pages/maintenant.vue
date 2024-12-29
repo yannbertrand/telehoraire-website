@@ -21,7 +21,13 @@ function getChannelDisplayName(channelId: string) {
             programmes, channel, index
           ) of data.programmesGroupedByChannel"
         >
-          <h2 class="channel">{{ getChannelDisplayName(channel) }}</h2>
+          <h2 class="channel">
+            <NuxtLink
+                :to="{ name: 'chaine-channel', params: { channel } }"
+                class="channel-link"
+                >{{ getChannelDisplayName(channel) }}</NuxtLink
+            >
+          </h2>
 
           <div class="programmes-container">
             <div class="programmes" tabindex="0">
@@ -47,6 +53,9 @@ function getChannelDisplayName(channelId: string) {
 .channel {
   margin-top: calc(1.5 * var(--pico-block-spacing-vertical));
   margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
+  .channel-link {
+    padding: var(--pico-spacing);
+  }
 }
 
 .programmes-container {
