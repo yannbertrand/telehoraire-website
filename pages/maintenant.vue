@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({ title: "Programmes en cours" });
 
-const { data } = await useFetch("/api/now");
+const { data, status } = await useLazyFetch("/api/now");
 
 function getChannelDisplayName(channelId: string) {
 	return data.value?.channels.find((channel) => channel.id === channelId)
@@ -13,7 +13,11 @@ function getChannelDisplayName(channelId: string) {
   <NuxtLayout name="telehoraire">
     <template #title>Programmes en cours en ce moment</template>
 
-    <div v-if="data">
+    <h2 v-if="status === 'pending'" class="pending">
+      Chargement en cours...
+    </h2>
+
+    <div v-else v-if="data">
       <ClientOnly>
         <template
           v-if="data.programmesGroupedByChannel"
@@ -50,6 +54,11 @@ function getChannelDisplayName(channelId: string) {
 </template>
 
 <style scoped>
+.pending {
+    margin-top: var(--pico-block-spacing-vertical);
+    text-align: center;
+}
+
 .channel {
   margin-top: calc(1.5 * var(--pico-block-spacing-vertical));
   margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
