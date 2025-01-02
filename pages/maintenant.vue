@@ -1,7 +1,7 @@
 <script setup lang="ts">
 definePageMeta({ title: "Programmes en cours" });
 
-const { data, status } = await useLazyFetch("/api/now", { server: false });
+const { data, status } = await useLazyFetch("/api/now");
 
 function getChannelDisplayName(channelId: string) {
 	return data.value?.channels.find((channel) => channel.id === channelId)
