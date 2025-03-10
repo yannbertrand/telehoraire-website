@@ -1,0 +1,31 @@
+---
+import { Image } from "astro:assets";
+import type { Icon } from "../types.js";
+
+interface Props {
+	icon: Icon[];
+}
+
+const { icon } = Astro.props;
+---
+
+<Image
+    src={icon[0].src}
+    alt=""
+    width="360"
+    height="202"
+    class="programme-large-illustration"
+/>
+
+<style>
+.programme-large-illustration {
+  max-width: var(--programme-max-width);
+  aspect-ratio: 16/9;
+  height: auto;
+  object-fit: cover;
+
+  @media (prefers-color-scheme: dark) {
+    filter: grayscale(20%) saturate(90%);
+  }
+}
+</style>

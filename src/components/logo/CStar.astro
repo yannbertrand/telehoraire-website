@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import src from "./cstar.svg";
+
+interface Props {
+	width?: number;
+	height?: number;
+}
+
+const { width = 80, height = 80 } = Astro.props;
+---
+
+
+  <Image
+    src={src}
+    alt=""
+    width={width}
+    height={height}
+    class="channel-cover--cstar"
+  />
+
+
+<style>
+@media (prefers-color-scheme: dark) {
+  .channel-cover--cstar {
+    filter: saturate(90%) brightness(80%);
+  }
+}
+</style>
