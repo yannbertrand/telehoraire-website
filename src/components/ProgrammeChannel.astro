@@ -1,0 +1,46 @@
+---
+import LogoArte from "./logo/Arte.astro";
+import LogoBfmTv from "./logo/BfmTv.astro";
+import LogoC8 from "./logo/C8.astro";
+import LogoCNews from "./logo/CNews.astro";
+import LogoCStar from "./logo/CStar.astro";
+import LogoCanalPlus from "./logo/CanalPlus.astro";
+import LogoFrance2 from "./logo/France2.astro";
+import LogoFrance3 from "./logo/France3.astro";
+import LogoFrance4 from "./logo/France4.astro";
+import LogoFrance5 from "./logo/France5.astro";
+import LogoLcp from "./logo/Lcp.astro";
+import LogoM6 from "./logo/M6.astro";
+import LogoNrj12 from "./logo/Nrj12.astro";
+import LogoTf1 from "./logo/Tf1.astro";
+import LogoTfx from "./logo/Tfx.astro";
+import LogoTmc from "./logo/Tmc.astro";
+import LogoW9 from "./logo/W9.astro";
+
+interface Props {
+	channelId: string;
+}
+
+const { channelId } = Astro.props;
+---
+
+{
+channelId === 'TF1' ? <LogoTf1 width={60} height={22} /> :
+channelId === 'France2' ? <LogoFrance2 width={40} height={35} /> :
+channelId === 'France3' ? <LogoFrance3 width={40} height={35} /> :
+channelId === 'CanalPlus' ? <LogoCanalPlus width={60} height={60} /> :
+channelId === 'France5' ? <LogoFrance5 width={40} height={35} /> :
+channelId === 'M6' ? <LogoM6 width={50} height={37} /> :
+channelId === 'Arte' ? <LogoArte width={18} height={74} /> :
+channelId === 'C8' ? <LogoC8 width={60} height={31} /> :
+channelId === 'W9' ? <LogoW9 width={60} height={29} /> :
+channelId === 'TMC' ? <LogoTmc width={60} height={22} /> :
+channelId === 'NT1' ? <LogoTfx width={60} height={22} /> :
+channelId === 'NRJ12' ? <LogoNrj12 width={40} height={41} /> :
+channelId === 'LaChaineParlementaire' ? <LogoLcp width={50} height={27} /> :
+channelId === 'France4' ? <LogoFrance4 width={40} height={35} /> :
+channelId === 'BFMTV' ? <LogoBfmTv width={45} height={45} /> :
+channelId === 'CNews' ? <LogoCNews width={70} height={18} /> :
+channelId === 'CStar' ? <LogoCStar width={70} height={20} /> :
+channelId
+}

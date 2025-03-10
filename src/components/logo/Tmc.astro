@@ -1,0 +1,29 @@
+---
+import { Image } from "astro:assets";
+import src from "./tmc.svg";
+
+interface Props {
+	width?: number;
+	height?: number;
+}
+
+const { width = 80, height = 80 } = Astro.props;
+---
+
+
+  <Image
+    src={src}
+    alt=""
+    width={width}
+    height={height}
+    class="channel-cover--tmc"
+  />
+
+
+<style>
+@media (prefers-color-scheme: dark) {
+  .channel-cover--tmc {
+    filter: grayscale(20%) brightness(80%);
+  }
+}
+</style>

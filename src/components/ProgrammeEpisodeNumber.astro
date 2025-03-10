@@ -1,0 +1,32 @@
+---
+import type { EpisodeNumber } from "../types.js";
+
+interface Props {
+	episodeNum: EpisodeNumber[];
+}
+
+const { episodeNum } = Astro.props;
+
+function getEpisodeNumber(episodeNum: EpisodeNumber[]) {
+	if (episodeNum && episodeNum.length > 0) {
+		const onscreenEpisodeNum = episodeNum.find(
+			({ system }) => system === "onscreen",
+		);
+
+		if (onscreenEpisodeNum !== undefined) {
+			return onscreenEpisodeNum._value;
+		}
+	}
+}
+
+const episodeNumber = getEpisodeNumber(episodeNum);
+---
+
+<span class="programme-episode-number">{ episodeNumber }</span>
+
+<style>
+.programme-episode-number {
+    font-size: calc(var(--pico-font-size) * 0.7);
+    height: 100%;
+}
+</style>

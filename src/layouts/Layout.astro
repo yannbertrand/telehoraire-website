@@ -1,0 +1,119 @@
+---
+import "@picocss/pico/css/pico.css";
+import "@picocss/pico/css/pico.colors.css";
+
+interface Props {
+	title?: string;
+	lastUpdate?: string;
+}
+const { title, lastUpdate } = Astro.props;
+---
+
+<!doctype html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<meta name="generator" content={Astro.generator} />
+		<title>Téléhoraire</title>
+	</head>
+	<body>
+        <header class="heading">
+            <hgroup class="titles">
+              <h1 class="title"><a href="/">Téléhoraire</a></h1>
+              {title && <p>{title}</p>}
+            </hgroup>
+          </header>
+
+          <main class="container">
+            {lastUpdate &&
+                <p>Dernière mise à jour&nbsp;: {lastUpdate}</p>
+                <hr />
+            }
+            <slot />
+          </main>
+	</body>
+</html>
+
+<style>
+:root {
+  --pico-block-spacing-vertical: 2rem;
+  --programme-max-width: 360px;
+}
+
+[data-theme='light'],
+:root:not([data-theme='dark']) {
+  --pico-header-background: rgba(255, 255, 255, 0.75);
+  --pico-header-border-color: rgba(220, 220, 220, 0.9);
+}
+
+/* Dark color scheme (Auto) */
+/* Automatically enabled if user has Dark mode enabled */
+@media only screen and (prefers-color-scheme: dark) {
+  :root:not([data-theme]) {
+    --pico-header-background: rgba(19, 23, 31, 0.75);
+    --pico-header-border-color: rgba(32, 38, 50, 0.9);
+  }
+}
+
+/* Dark color scheme (Forced) */
+/* Enabled if forced with data-theme="dark" */
+[data-theme='dark'] {
+  --pico-header-background: rgba(19, 23, 31, 0.75);
+  --pico-header-border-color: rgba(32, 38, 50, 0.9);
+}
+
+.heading {
+  position: sticky;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--pico-spacing);
+  top: 0;
+  padding: var(--pico-spacing);
+  z-index: 2;
+  box-shadow: var(--pico-card-box-shadow);
+  backdrop-filter: blur(1rem);
+  background-color: var(--pico-header-background);
+  border-bottom: var(--pico-border-width) solid var(--pico-header-border-color);
+
+  .titles {
+    margin: 0;
+  }
+}
+
+.container {
+  padding-top: var(--pico-spacing);
+  padding-bottom: var(--pico-spacing);
+}
+
+.menu {
+  display: flex;
+  flex-direction: column;
+
+  .close-button {
+    position: absolute;
+    top: calc(var(--pico-spacing) + 4px);
+    right: var(--pico-spacing);
+  }
+
+  .links {
+    padding: 0;
+
+    .link {
+      list-style-type: none;
+      font-size: 1.5rem;
+
+      a {
+        display: block;
+        padding: calc(var(--pico-spacing) / 4);
+      }
+    }
+
+    .external {
+      margin-top: var(--pico-spacing);
+    }
+  }
+}
+</style>

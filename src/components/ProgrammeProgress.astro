@@ -1,0 +1,16 @@
+---
+interface Props {
+	start: string;
+	stop: string;
+}
+
+const { start, stop } = Astro.props;
+
+const $start = new Date(start);
+const $stop = new Date(stop);
+
+const total = $stop.getTime() - $start.getTime();
+const progress = Date.now() - $start.getTime();
+---
+
+<progress value={progress} max={total} />
