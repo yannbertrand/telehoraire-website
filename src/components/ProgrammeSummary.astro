@@ -26,7 +26,7 @@ const { programme } = Astro.props;
     <div class="content">
       <hgroup>
         <h3 class="title">
-          <span set:html={programme.title}></span>
+          <a href=`/telehoraire-website/programme/${programme.id}`><span set:html={programme.title}></span></a>
           {programme.episodeNum && <ProgrammeEpisodeNumber
             episodeNum={programme.episodeNum}
           />}
