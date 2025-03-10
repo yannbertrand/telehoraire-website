@@ -1,0 +1,50 @@
+---
+import ProgrammeChannel from "../../components/ProgrammeChannel.astro";
+import ProgrammeDetails from "../../components/ProgrammeDetails.astro";
+import { fetchApi } from "../../helpers/fetch-api.ts";
+import { formatChannel } from "../../helpers/format-channel.ts";
+import { formatProgramme } from "../../helpers/format-programme.ts";
+import Layout from "../../layouts/Layout.astro";
+import type { Programme } from "../../types.ts";
+
+export async function getStaticPaths() {
+	const { data } = await fetchApi("tnt.prime.fr.json");
+
+	return data.channels
+		.map((channel) => {
+			const programmes = data.programmes.filter(
+				(programme) => programme.channel === channel.id,
+			);
+			return {
+				channel: formatChannel(channel),
+				programmes: programmes.map(formatProgramme),
+			};
+		})
+		.map(({ channel, programmes }) => {
+			return {
+				params: { channelId: channel.id },
+				props: { channel, programmes },
+			};
+		});
+}
+
+const { channelId } = Astro.params;
+const { channel, programmes } = Astro.props;
+---
+
+
+<Layout title={`Ce soir sur ${channel.displayName}`}>
+    <div class="channel-logo">
+        <ProgrammeChannel channelId={channelId} />
+    </div>
+
+    {programmes.map((programme: Programme) => (
+        <ProgrammeDetails programme={programme} />
+    ))}
+</Layout>
+
+<style>
+.channel-logo {
+margin-bottom: var(--pico-block-spacing-vertical);
+}
+</style>

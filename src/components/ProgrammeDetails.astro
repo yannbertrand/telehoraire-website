@@ -1,0 +1,70 @@
+---
+import type { Programme } from "../types.ts";
+import ProgrammeCategories from "./ProgrammeCategories.astro";
+import ProgrammeEpisodeNumber from "./ProgrammeEpisodeNumber.astro";
+import ProgrammeLargeCover from "./ProgrammeLargeCover.astro";
+import ProgrammeProgress from "./ProgrammeProgress.astro";
+
+interface Props {
+	programme: Programme;
+}
+
+const { programme } = Astro.props;
+---
+
+<article class="programme-details">
+    <div>
+        <div>
+        <hgroup>
+            <h3 class="title">
+            <span set:html={programme.title}></span>
+            {programme.episodeNum && <ProgrammeEpisodeNumber
+                episodeNum={programme.episodeNum}
+            />}
+            </h3>
+            <p set:html={programme.subTitle}></p>
+        </hgroup>
+
+        <ProgrammeCategories categories={programme.category} />
+
+        <div class="cover">
+            {programme.icon && <ProgrammeLargeCover
+                icon={programme.icon}
+            />}
+        </div>
+
+        <p class="description" set:html={programme.desc}></p>
+        </div>
+    </div>
+
+    <footer class="footer">
+        { programme.startStop }
+        <ProgrammeProgress start={programme.start} stop={programme.stop} />
+    </footer>
+    </article>
+
+<style>
+.programme-details {
+    --programme-max-width: 140px;
+
+    .title {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: var(--pico-spacing);
+    }
+    .cover {
+    float: right;
+    margin-top: var(--pico-spacing);
+    margin-left: var(--pico-spacing);
+    margin-bottom: var(--pico-spacing);
+    }
+    .description {
+    padding-top: var(--pico-spacing);
+    color: var(--pico-muted-color);
+    }
+    .footer {
+    clear: right;
+    }
+}
+</style>

@@ -1,0 +1,23 @@
+---
+import ProgrammeDetails from "../../components/ProgrammeDetails.astro";
+import { fetchApi } from "../../helpers/fetch-api.ts";
+import { formatProgramme } from "../../helpers/format-programme.ts";
+import Layout from "../../layouts/Layout.astro";
+
+export async function getStaticPaths() {
+	const { data } = await fetchApi("tnt.prime.fr.json");
+
+	return data.programmes.map(formatProgramme).map((programme) => {
+		return {
+			params: { id: programme.id },
+			props: { programme },
+		};
+	});
+}
+
+const { programme } = Astro.props;
+---
+
+<Layout title="Détails d'un programme">
+    <ProgrammeDetails programme={programme} />
+</Layout>
