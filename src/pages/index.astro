@@ -25,7 +25,7 @@ function getChannelDisplayName(channelId: string) {
     {
         Object.keys(programmesGroupedByChannel).map((channel) => (
             <h2 class="channel">
-                <a class="channel-link">{ getChannelDisplayName(channel) }</a>
+                <a href=`/telehoraire-website/chaine/${channel}` class="channel-link">{ getChannelDisplayName(channel) }</a>
             </h2>
 
             <div class="programmes-container">

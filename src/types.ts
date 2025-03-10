@@ -31,6 +31,7 @@ export type Rating = {
 };
 
 export type Programme = {
+	id: string;
 	channel: string;
 	title: string;
 	start: DateString;
