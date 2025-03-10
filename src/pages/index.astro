@@ -1,0 +1,85 @@
+---
+import GithubLogo from "../components/GithubLogo.astro";
+import ProgrammeSummary from "../components/ProgrammeSummary.astro";
+import { fetchApi } from "../helpers/fetch-api.ts";
+import { formatChannel } from "../helpers/format-channel.ts";
+import { formatProgramme } from "../helpers/format-programme.ts";
+import { groupProgrammesByChannel } from "../helpers/group-programmes-by-channel.ts";
+import Layout from "../layouts/Layout.astro";
+
+const { data, lastUpdate } = await fetchApi("tnt.prime.fr.json");
+
+const formattedChannels = data.channels.map(formatChannel);
+const formattedProgrammes = data.programmes.map(formatProgramme);
+
+const programmesGroupedByChannel =
+	groupProgrammesByChannel(formattedProgrammes);
+
+function getChannelDisplayName(channelId: string) {
+	return formattedChannels.find((channel) => channel.id === channelId)
+		?.displayName;
+}
+---
+
+<Layout title="Ce soir à la télé" lastUpdate={lastUpdate}>
+    {
+        Object.keys(programmesGroupedByChannel).map((channel) => (
+            <h2 class="channel">
+                <a class="channel-link">{ getChannelDisplayName(channel) }</a>
+            </h2>
+
+            <div class="programmes-container">
+                <div class="programmes" tabindex="0">
+                    {programmesGroupedByChannel[channel]?.map((programme) => (
+                        <div class="programme">
+                            <ProgrammeSummary programme={programme} />
+                        </div>
+                    ))}
+                </div>
+            </div>
+        ))
+    }
+
+    <hr />
+
+    <p class="github-link">
+        Voir
+        <a href="https://github.com/yannbertrand/telehoraire-website">le projet GitHub <GithubLogo /></a>.
+    </p>
+</Layout>
+
+
+<style scoped>
+    .channel {
+      margin-top: calc(1.5 * var(--pico-block-spacing-vertical));
+      margin-bottom: calc(2 * var(--pico-block-spacing-vertical));
+      .channel-link {
+        padding: var(--pico-spacing);
+      }
+    }
+    
+    .programmes-container {
+      --top-spacing: calc(-1 * var(--pico-block-spacing-vertical));
+      --bottom-spacing: calc(-0.5 * var(--pico-block-spacing-vertical));
+    
+      margin-top: calc(var(--top-spacing) - var(--pico-block-spacing-vertical));
+      margin-bottom: var(--bottom-spacing);
+    
+      --min-horizontal-spacing: var(--pico-spacing);
+      --left-spacing: calc(-1 * var(--min-horizontal-spacing));
+      --right-spacing: calc(-1 * var(--min-horizontal-spacing));
+    
+      margin-left: var(--left-spacing);
+      margin-right: var(--left-spacing);
+    
+      .programmes {
+        display: flex;
+        padding-top: calc(-1 * var(--top-spacing));
+        padding-bottom: calc(-1 * var(--bottom-spacing));
+        padding-left: calc(-1 * var(--left-spacing));
+        padding-right: calc(-1 * var(--right-spacing));
+        gap: var(--pico-spacing);
+        overflow-y: auto;
+      }
+    }
+</style>
