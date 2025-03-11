@@ -1,27 +1,29 @@
 {
-  "private": true,
-  "name": "telehoraire",
-  "type": "module",
-  "homepage": "https://github.com/yannbertrand/telehoraire-website",
-  "scripts": {
-    "build": "astro build",
-    "dev": "astro dev",
-    "preview": "astro preview",
-    "typecheck": "astro check",
-    "astro": "astro",
-    "lint": "biome check",
-    "format": "biome check --write",
-    "test": "vitest"
-  },
-  "license": "MIT",
-  "dependencies": {
-    "@astrojs/check": "^0.9.4",
-    "@picocss/pico": "^2.0.6",
-    "astro": "^5.4.2",
-    "typescript": "^5.8.2"
-  },
-  "devDependencies": {
-    "@biomejs/biome": "^1.9.4",
-    "vitest": "^3.0.8"
-  }
+	"private": true,
+	"name": "telehoraire",
+	"type": "module",
+	"homepage": "https://github.com/yannbertrand/telehoraire-website",
+	"scripts": {
+		"build": "astro build",
+		"dev": "astro dev",
+		"preview": "astro preview",
+		"typecheck": "astro check",
+		"astro": "astro",
+		"lint": "biome check",
+		"format": "biome check --write",
+		"test": "vitest"
+	},
+	"license": "MIT",
+	"dependencies": {
+		"@astrojs/check": "^0.9.4",
+		"@picocss/pico": "^2.0.6",
+		"astro": "^5.4.2",
+		"hash-sum": "^2.0.0",
+		"typescript": "^5.8.2"
+	},
+	"devDependencies": {
+		"@biomejs/biome": "^1.9.4",
+		"@types/hash-sum": "^1.0.2",
+		"vitest": "^3.0.8"
+	}
 }
