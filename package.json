@@ -15,15 +15,15 @@
 	},
 	"license": "MIT",
 	"dependencies": {
-		"@astrojs/check": "^0.9.4",
-		"@picocss/pico": "^2.0.6",
-		"astro": "^5.4.2",
-		"hash-sum": "^2.0.0",
-		"typescript": "^5.8.2"
+		"@astrojs/check": "0.9.4",
+		"@picocss/pico": "2.0.6",
+		"astro": "5.4.2",
+		"hash-sum": "2.0.0",
+		"typescript": "5.8.2"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "^1.9.4",
-		"@types/hash-sum": "^1.0.2",
-		"vitest": "^3.0.8"
+		"@biomejs/biome": "1.9.4",
+		"@types/hash-sum": "1.0.2",
+		"vitest": "3.0.8"
 	}
 }
