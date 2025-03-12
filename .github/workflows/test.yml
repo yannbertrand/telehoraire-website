@@ -4,6 +4,10 @@ on:
   push:
   pull_request:
 
+env:
+  SOURCE_API_URL: ${{ vars.SOURCE_API_URL }}
+  TZ: ${{ vars.TZ }}
+
 jobs:
   test:
     runs-on: ubuntu-latest
@@ -20,8 +24,7 @@ jobs:
         run: npm ci
       - name: Run Typecheck
         run: npm run typecheck
+      - name: Run Tests
+        run: npm run test
       - name: Build
         run: npm run build
-        env:
-          SOURCE_API_URL: ${{ vars.SOURCE_API_URL }}
-          TZ: ${{ vars.TZ }}
