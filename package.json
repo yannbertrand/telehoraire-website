@@ -16,7 +16,7 @@
 	"license": "MIT",
 	"dependencies": {
 		"@astrojs/check": "0.9.4",
-		"@picocss/pico": "2.0.6",
+		"@picocss/pico": "2.1.1",
 		"astro": "5.5.2",
 		"hash-sum": "2.0.0",
 		"typescript": "5.8.2"
