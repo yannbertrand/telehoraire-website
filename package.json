@@ -19,7 +19,7 @@
 		"@picocss/pico": "2.1.1",
 		"astro": "5.14.1",
 		"hash-sum": "2.0.0",
-		"typescript": "5.9.2"
+		"typescript": "5.9.3"
 	},
 	"devDependencies": {
 		"@biomejs/biome": "2.2.4",
