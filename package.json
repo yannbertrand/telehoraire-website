@@ -22,7 +22,7 @@
 		"typescript": "5.9.3"
 	},
 	"devDependencies": {
-		"@biomejs/biome": "2.2.5",
+		"@biomejs/biome": "2.2.6",
 		"@types/hash-sum": "1.0.2",
 		"vitest": "3.2.4"
 	}
